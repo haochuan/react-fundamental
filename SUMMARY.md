@@ -9,3 +9,7 @@
     * [Class](part1/6.md)
     * [Modules](part1/7.md)
 
+* [Knowing React](part2/README.md)
+    * [What is React](part2/1.md)
+    * [Virtual DOM](part2/2.md)
+

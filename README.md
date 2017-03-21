@@ -10,3 +10,7 @@ React is an open source library for creating composable interfaces, and it is ma
     * [Spread Operator](part1/5.md)
     * [Class](part1/6.md)
     * [Modules](part1/7.md)
+
+* [Knowing React](part2/README.md)
+    * [What is React](part2/1.md)
+    * [Virtual DOM](part2/2.md)
