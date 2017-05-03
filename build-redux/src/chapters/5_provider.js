@@ -60,7 +60,7 @@ const createStore = (reducer, initialState) => {
 };
 const store = createStore(reducer, initialState);
 
-// ==================== From Previous Start =====================
+// ==================== From Previous End =====================
 
 // Few Problems:
 // 1. have to use components to pass the store from top to lower
