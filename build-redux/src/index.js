@@ -195,53 +195,140 @@ Provider.childContextTypes = {
   store: PropTypes.object
 };
 
-class App extends Component {
-  constructor(props) {
-    // store is the store from Provicer
-    super();
-    // get stage from store
-    this.state = store.getState();
-    this.increase = this.increase.bind(this);
-    this.decrease = this.decrease.bind(this);
-  }
-  // subscribe the store
-  componentWillMount() {
-    // every dispatch event will trigger this.setState to get a new state to re-render the UI
-    this.unsubscribe = store.subscribe(() => {
-      this.setState(store.getState());
-    });
-  }
-  // unsubscribe the store
-  componentWillUnmount() {
-    this.unsubscribe();
+//class App extends Component {
+//constructor(props) {
+//// store is the store from Provicer
+//super();
+//// get stage from store
+//this.state = store.getState();
+//this.increase = this.increase.bind(this);
+//this.decrease = this.decrease.bind(this);
+//}
+//// subscribe the store
+//componentWillMount() {
+//// every dispatch event will trigger this.setState to get a new state to re-render the UI
+//this.unsubscribe = store.subscribe(() => {
+//this.setState(store.getState());
+//});
+//}
+//// unsubscribe the store
+//componentWillUnmount() {
+//this.unsubscribe();
+//}
+
+//increase() {
+//store.dispatch({
+//type: INCREASE
+//});
+//}
+
+//decrease() {
+//store.dispatch({
+//type: DECREASE
+//});
+//}
+
+//render() {
+//return (
+//<div className="App">
+//<p>{this.state.counter}</p>
+//<button onClick={this.increase}>Increase</button>
+//<button onClick={this.decrease}>Decrease</button>
+//</div>
+//);
+//}
+//}
+
+//ReactDOM.render(
+//<Provider store={store}>
+//<App />
+//</Provider>,
+//document.getElementById('root')
+//);
+// BUT!!!
+// If you want your application to be stable, don't use context. It is an experimental API and it is likely to break in future releases of React.
+// now we need a way to convert context back into props. That's where connect comes in.
+//
+// connect is a HOC
+// more of a higher order factory
+// which takes two functions and returns a function that takes a component and returns a new component.
+// That component subscribes to the store and updates your component's props when there are changes.
+//
+// gives us back a new function, and we pass our component to that function,
+// which gives us a new component, which will automatically get all those mapped props
+const connect = (
+  mapStateToProps = () => ({}), // first function, return {} by default
+  mapDispatchToProps = () => ({}) // second function, return {} by default
+) => Component => {
+  class Connected extends React.Component {
+    onStoreOrPropsChange(props) {
+      const { store } = this.context;
+      const state = store.getState();
+      const stateProps = mapStateToProps(state, props); // take the current state from store then return some props
+      const dispatchProps = mapDispatchToProps(store.dispatch, props); // take dispatch from store then return some props
+      // store those returned props into it's own state
+      this.setState({
+        ...stateProps,
+        ...dispatchProps
+      });
+    }
+    componentWillMount() {
+      const { store } = this.context;
+      // init props
+      this.onStoreOrPropsChange(this.props);
+      // subscribe
+      this.unsubscribe = store.subscribe(() =>
+        this.onStoreOrPropsChange(this.props)
+      );
+    }
+    componentWillReceiveProps(nextProps) {
+      // update props
+      this.onStoreOrPropsChange(nextProps);
+    }
+    componentWillUnmount() {
+      this.unsubscribe();
+    }
+    render() {
+      // pass props and own state all into props
+      return <Component {...this.props} {...this.state} />;
+    }
   }
 
-  increase() {
-    store.dispatch({
+  Connected.contextTypes = {
+    store: PropTypes.object
+  };
+
+  return Connected;
+};
+
+const App = ({ counter, increase, decrease }) => (
+  <div className="App">
+    <p>{counter}</p>
+    <button onClick={increase}>Increase</button>
+    <button onClick={decrease}>Decrease</button>
+  </div>
+);
+
+const mapStateToProps = state => ({
+  counter: state.counter
+});
+
+const mapDispatchToProps = dispatch => ({
+  increase: () =>
+    dispatch({
       type: INCREASE
-    });
-  }
-
-  decrease() {
-    store.dispatch({
+    }),
+  decrease: () =>
+    dispatch({
       type: DECREASE
-    });
-  }
+    })
+});
 
-  render() {
-    return (
-      <div className="App">
-        <p>{this.state.counter}</p>
-        <button onClick={this.increase}>Increase</button>
-        <button onClick={this.decrease}>Decrease</button>
-      </div>
-    );
-  }
-}
+const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <AppContainer />
   </Provider>,
   document.getElementById('root')
 );
