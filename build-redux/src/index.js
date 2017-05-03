@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import './index.css';
 
@@ -126,19 +127,88 @@ const createStore = (reducer, initialState) => {
 
 const store = createStore(reducer, initialState);
 
+//class App extends Component {
+//constructor(props) {
+//super();
+//// get stage from store
+//this.state = props.store.getState();
+//this.increase = this.increase.bind(this);
+//this.decrease = this.decrease.bind(this);
+//}
+//// subscribe the store
+//componentWillMount() {
+//// every dispatch event will trigger this.setState to get a new state to re-render the UI
+//this.unsubscribe = this.props.store.subscribe(() => {
+//this.setState(this.props.store.getState());
+//});
+//}
+//// unsubscribe the store
+//componentWillUnmount() {
+//this.unsubscribe();
+//}
+
+//increase() {
+//this.props.store.dispatch({
+//type: INCREASE
+//});
+//}
+
+//decrease() {
+//this.props.store.dispatch({
+//type: DECREASE
+//});
+//}
+
+//render() {
+//return (
+//<div className="App">
+//<p>{this.state.counter}</p>
+//<button onClick={this.increase}>Increase</button>
+//<button onClick={this.decrease}>Decrease</button>
+//</div>
+//);
+//}
+//}
+
+// Render React
+//ReactDOM.render(<App store={store} />, document.getElementById('root'));
+
+// Few Problems:
+// 1. hard to wire
+// 2. a lot of repetition
+// 3. have to pass the entire store tree into the component
+//
+// The Provider component uses React's context feature to convert a store prop into a context property. Context is a way to pass information from a top-level component down to descendant components without components in the middle having to explicitly pass props.
+
+class Provider extends Component {
+  getChildContext() {
+    return {
+      store: this.props.store
+    };
+  }
+
+  render() {
+    return this.props.children;
+  }
+}
+Provider.childContextTypes = {
+  store: PropTypes.object
+};
+
 class App extends Component {
   constructor(props) {
+    // store is the store from Provicer
     super();
     // get stage from store
-    this.state = props.store.getState();
+    this.state = store.getState();
     this.increase = this.increase.bind(this);
     this.decrease = this.decrease.bind(this);
   }
   // subscribe the store
   componentWillMount() {
     // every dispatch event will trigger this.setState to get a new state to re-render the UI
-    this.unsubscribe = this.props.store.subscribe(() => {
-      this.setState(this.props.store.getState());
+    this.unsubscribe = store.subscribe(() => {
+      this.setState(store.getState());
     });
   }
   // unsubscribe the store
@@ -147,13 +217,13 @@ class App extends Component {
   }
 
   increase() {
-    this.props.store.dispatch({
+    store.dispatch({
       type: INCREASE
     });
   }
 
   decrease() {
-    this.props.store.dispatch({
+    store.dispatch({
       type: DECREASE
     });
   }
@@ -169,5 +239,9 @@ class App extends Component {
   }
 }
 
-// Render React
-ReactDOM.render(<App store={store} />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
