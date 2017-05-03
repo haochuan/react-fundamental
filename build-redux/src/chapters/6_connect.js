@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-// From previous
-
-// Reducer
-// function that takes the current state and an action and returns the new state
-// For the counter app, if we provide an action to increase the number, we should get a new state with number = number + 1
-// State in immutable
+// ==================== From Previous Start ====================
 
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
@@ -30,10 +25,6 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-// The Store
-// hold onto our single state variable as well as some useful methods for setting and getting the state
-
-// validate if the action is an non array object
 const validateAction = action => {
   if (!action || typeof action !== 'object' || Array.isArray(action)) {
     throw new Error('Action must be an object!');
@@ -69,12 +60,6 @@ const createStore = (reducer, initialState) => {
 };
 
 const store = createStore(reducer, initialState);
-// Few Problems:
-// 1. hard to wire
-// 2. a lot of repetition
-// 3. have to pass the entire store tree into the component
-//
-// The Provider component uses React's context feature to convert a store prop into a context property. Context is a way to pass information from a top-level component down to descendant components without components in the middle having to explicitly pass props.
 
 class Provider extends Component {
   getChildContext() {
@@ -91,9 +76,26 @@ Provider.childContextTypes = {
   store: PropTypes.object
 };
 
-// New
-// BUT!!!
-// If you want your application to be stable, don't use context. It is an experimental API and it is likely to break in future releases of React.
+// ==================== From Previous End ====================
+
+// Few Problems:
+// 1. have to use components to pass the store from top to lower
+//  <App store={store}>
+//    <Counter store={store}>
+//      <A subStore={subStore}>
+//        <B subStore={subStore} />
+//      </A>
+//    </Counter>
+//    <AnotherCounter store={store}>
+//      <A subStore={subStore}>
+//        <B subStore={subStore} />
+//      </A>
+//    </AnotherCounter>
+//  </App>
+//
+//
+// Based on redux, we are not getting the store via context
+// we are getting the store via props
 // now we need a way to convert context back into props. That's where connect comes in.
 //
 // connect is a HOC
@@ -101,8 +103,6 @@ Provider.childContextTypes = {
 // which takes two functions and returns a function that takes a component and returns a new component.
 // That component subscribes to the store and updates your component's props when there are changes.
 //
-// gives us back a new function, and we pass our component to that function,
-// which gives us a new component, which will automatically get all those mapped props
 const connect = (
   mapStateToProps = () => ({}), // first function, return {} by default
   mapDispatchToProps = () => ({}) // second function, return {} by default
@@ -110,7 +110,7 @@ const connect = (
   class Connected extends React.Component {
     onStoreOrPropsChange(props) {
       const { store } = this.context;
-      const state = store.getState();
+      const state = store.getState(); // redux state
       const stateProps = mapStateToProps(state, props); // take the current state from store then return some props
       const dispatchProps = mapDispatchToProps(store.dispatch, props); // take dispatch from store then return some props
       // store those returned props into it's own state
@@ -148,18 +148,17 @@ const connect = (
   return Connected;
 };
 
-const App = ({ counter, increase, decrease }) => (
-  <div className="App">
-    <p>{counter}</p>
-    <button onClick={increase}>Increase</button>
-    <button onClick={decrease}>Decrease</button>
-  </div>
-);
+// 1. ComponentWillMount: get store => store this.props into this.state => subscribe
+// 2. CompomentillReceiveProps: set the newest props into this.state
+// 3. ComponentWillUnmount: unsubscribe
+// 4. render: return new component with all this.props and this.state mapped to this.props
 
+// takes store, returns new props using store
 const mapStateToProps = state => ({
   counter: state.counter
 });
 
+// takes dispatch, returns new props using dispatch
 const mapDispatchToProps = dispatch => ({
   increase: () =>
     dispatch({
@@ -171,11 +170,19 @@ const mapDispatchToProps = dispatch => ({
     })
 });
 
-const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
+const Counter = ({ counter, increase, decrease }) => (
+  <div className="App">
+    <p>{counter}</p>
+    <button onClick={increase}>Increase</button>
+    <button onClick={decrease}>Decrease</button>
+  </div>
+);
+
+const App = connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 ReactDOM.render(
   <Provider store={store}>
-    <AppContainer />
+    <App />
   </Provider>,
   document.getElementById('root')
 );

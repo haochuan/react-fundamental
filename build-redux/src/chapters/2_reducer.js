@@ -1,5 +1,5 @@
 // Reducer
-// function that takes the current state and an action and returns the new state
+// function that takes the current state and an action and returns a new state
 // For the counter app, if we provide an action to increase the number, we should get a new state with number = number + 1
 // State in immutable
 

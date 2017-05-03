@@ -1,10 +1,4 @@
-// From previous
-
-// Reducer
-// function that takes the current state and an action and returns the new state
-// For the counter app, if we provide an action to increase the number, we should get a new state with number = number + 1
-// State in immutable
-
+// ==================== From Previous Start =====================
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
 const initialState = { counter: 0 };
@@ -26,6 +20,7 @@ const reducer = (state = initialState, action) => {
       return state;
   }
 };
+// ====================== From Preview End =====================
 
 // The Store
 // hold onto our single state variable as well as some useful methods for setting and getting the state
@@ -40,6 +35,7 @@ const validateAction = action => {
   }
 };
 
+// function to create a store
 const createStore = (initialState, reducer) => {
   let state = initialState;
   return {

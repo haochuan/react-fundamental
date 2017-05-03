@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
-// From previous
-
-// Reducer
-// function that takes the current state and an action and returns the new state
-// For the counter app, if we provide an action to increase the number, we should get a new state with number = number + 1
-// State in immutable
+// ==================== From Previous Start =====================
 
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
@@ -31,10 +26,6 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-// The Store
-// hold onto our single state variable as well as some useful methods for setting and getting the state
-
-// validate if the action is an non array object
 const validateAction = action => {
   if (!action || typeof action !== 'object' || Array.isArray(action)) {
     throw new Error('Action must be an object!');
@@ -43,7 +34,6 @@ const validateAction = action => {
     throw new Error('Action must have a type');
   }
 };
-// We have a store that can use any reducer we provide to manage the state. But it's still missing an important bit: A way to subscribe to changes.
 const createStore = (reducer, initialState) => {
   let state = initialState;
   const subscribers = [];
@@ -68,18 +58,32 @@ const createStore = (reducer, initialState) => {
   };
   return store;
 };
-
 const store = createStore(reducer, initialState);
 
-// New
+// ==================== From Previous Start =====================
+
 // Few Problems:
-// 1. hard to wire
-// 2. a lot of repetition
-// 3. have to pass the entire store tree into the component
+// 1. have to use components to pass the store from top to lower
+//  <App store={store}>
+//    <Counter store={store}>
+//      <A subStore={subStore}>
+//        <B subStore={subStore} />
+//      </A>
+//    </Counter>
+//    <AnotherCounter store={store}>
+//      <A subStore={subStore}>
+//        <B subStore={subStore} />
+//      </A>
+//    </AnotherCounter>
+//  </App>
 //
-// The Provider component uses React's context feature to convert a store prop into a context property. Context is a way to pass information from a top-level component down to descendant components without components in the middle having to explicitly pass props.
+// 2. hard to wire, need to call subscribe and unsubscribe for every component
+//
+// The Provider component uses React's context feature to convert a store prop into a context property.
+// Context is a way to pass information from a top-level component down to descendant components without components in the middle
 
 class Provider extends Component {
+  // pass props.store as store to its children
   getChildContext() {
     return {
       store: this.props.store

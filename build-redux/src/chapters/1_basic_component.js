@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
-// Counter Component
+// Basic Counter Component using own state
 class Counter extends Component {
   constructor(props) {
     super();

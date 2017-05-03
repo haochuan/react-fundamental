@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-// From previous
-
-// Reducer
-// function that takes the current state and an action and returns the new state
-// For the counter app, if we provide an action to increase the number, we should get a new state with number = number + 1
-// State in immutable
-
+// ==================== From Previous Start ====================
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
 const initialState = { counter: 0 };
@@ -29,11 +23,6 @@ const reducer = (state = initialState, action) => {
       return state;
   }
 };
-
-// The Store
-// hold onto our single state variable as well as some useful methods for setting and getting the state
-
-// validate if the action is an non array object
 const validateAction = action => {
   if (!action || typeof action !== 'object' || Array.isArray(action)) {
     throw new Error('Action must be an object!');
@@ -42,9 +31,12 @@ const validateAction = action => {
     throw new Error('Action must have a type');
   }
 };
+// ==================== From Previous End ====================
 
-// New
 // We have a store that can use any reducer we provide to manage the state. But it's still missing an important bit: A way to subscribe to changes.
+// Currently even if the store change, the component has no way to know whether it should rerender
+// We need to update the props or the component's own state to let the component know what is the time to rerender
+
 const createStore = (reducer, initialState) => {
   let state = initialState;
   const subscribers = [];
@@ -52,7 +44,7 @@ const createStore = (reducer, initialState) => {
     dispatch: action => {
       validateAction(action);
       state = reducer(state, action);
-      subscribers.forEach(handler => handler());
+      subscribers.forEach(handler => handler()); // handler here will call setState
     },
     getState: () => state,
     subscribe: handler => {
