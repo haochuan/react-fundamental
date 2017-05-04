@@ -1,6 +1,7 @@
 // Reducer
 // function that takes the current state and an action and returns a new state
-// For the counter app, if we provide an action to increase the number, we should get a new state with number = number + 1
+// For the counter app, if we provide an action to increase the number,
+// we should get a new state with number = number + 1
 // State in immutable
 
 const INCREASE = 'INCREASE';
@@ -25,7 +26,8 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-//Redux bills itself as "a predictable state container for JavaScript apps". Feed in the same set of actions, and you'll end up in the same state.
+// Redux bills itself as "a predictable state container for JavaScript apps".
+// Feed in the same set of actions, and you'll end up in the same state.
 
 // Test Reducer
 

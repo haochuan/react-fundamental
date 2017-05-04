@@ -33,9 +33,11 @@ const validateAction = action => {
 };
 // ==================== From Previous End ====================
 
-// We have a store that can use any reducer we provide to manage the state. But it's still missing an important bit: A way to subscribe to changes.
+// We have a store that can use any reducer we provide to manage the state.
+// But it's still missing an important bit: A way to subscribe to changes.
 // Currently even if the store change, the component has no way to know whether it should rerender
-// We need to update the props or the component's own state to let the component know what is the time to rerender
+// We need to update the props or the component's own state to let the component know
+// what is the time to rerender
 
 const createStore = (reducer, initialState) => {
   let state = initialState;
@@ -99,9 +101,11 @@ class Counter extends Component {
   render() {
     return (
       <div className="App">
-        <p>{this.state.counter}</p>
-        <button onClick={this.increase}>Increase</button>
-        <button onClick={this.decrease}>Decrease</button>
+        <p className="counter-value">{this.state.counter}</p>
+        <div className="button-container">
+          <button onClick={this.increase}>Increase</button>
+          <button onClick={this.decrease}>Decrease</button>
+        </div>
       </div>
     );
   }

@@ -33,7 +33,8 @@ const validateAction = action => {
     throw new Error('Action must have a type');
   }
 };
-// We have a store that can use any reducer we provide to manage the state. But it's still missing an important bit: A way to subscribe to changes.
+// We have a store that can use any reducer we provide to manage the state.
+// But it's still missing an important bit: A way to subscribe to changes.
 const createStore = (reducer, initialState) => {
   let state = initialState;
   const subscribers = [];
@@ -111,8 +112,10 @@ const connect = (
     onStoreOrPropsChange(props) {
       const { store } = this.context;
       const state = store.getState(); // redux state
-      const stateProps = mapStateToProps(state, props); // take the current state from store then return some props
-      const dispatchProps = mapDispatchToProps(store.dispatch, props); // take dispatch from store then return some props
+      // take the current state from store then return some props
+      const stateProps = mapStateToProps(state, props);
+      // take dispatch from store then return some props
+      const dispatchProps = mapDispatchToProps(store.dispatch, props);
       // store those returned props into it's own state
       this.setState({
         ...stateProps,
@@ -172,9 +175,9 @@ const mapDispatchToProps = dispatch => ({
 
 const Counter = ({ counter, increase, decrease }) => (
   <div className="App">
-    <p>{counter}</p>
-    <button onClick={increase}>Increase</button>
-    <button onClick={decrease}>Decrease</button>
+    <p>{this.state.counter}</p>
+    <button onClick={this.increase}>Increase</button>
+    <button onClick={this.decrease}>Decrease</button>
   </div>
 );
 
