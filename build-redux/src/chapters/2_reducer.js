@@ -32,7 +32,7 @@ const reducer = (state = initialState, action) => {
 // Test Reducer
 
 console.log('========== Reducer Test Start ==========');
-console.log('INIT STATE: ', { counter: 0 });
+console.log('INIT STATE: ', initialState);
 const state_0 = reducer({ counter: 0 }, { type: INCREASE });
 console.log('INCREASE: ', state_0);
 const state_1 = reducer(state_0, { type: INCREASE });

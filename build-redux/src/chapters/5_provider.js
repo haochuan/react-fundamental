@@ -41,12 +41,15 @@ const createStore = (reducer, initialState) => {
     dispatch: action => {
       validateAction(action);
       state = reducer(state, action);
+      console.log('Action: ', action);
+      console.log('Current State: ', state);
       subscribers.forEach(handler => handler());
     },
     getState: () => state,
     subscribe: handler => {
       // add handler into list
       subscribers.push(handler);
+      console.log('Subscribe: ', handler);
       // return unsubscribe function
       return () => {
         const index = subscribers.indexOf(handler);
@@ -82,7 +85,7 @@ const store = createStore(reducer, initialState);
 // The Provider component uses React's context feature
 // to convert a store prop into a context property.
 // Context is a way to pass information from a top-level component
-// down to descendant components without components in the middle
+// down to lower level components without components in the middle
 
 class Provider extends Component {
   // pass props.store as store to its children
@@ -105,6 +108,8 @@ class Counter extends Component {
     // store is the store from Provicer
     super();
     // get stage from store
+    console.log('Props: ', props);
+    console.log('Store: ', store);
     this.state = store.getState();
     this.increase = this.increase.bind(this);
     this.decrease = this.decrease.bind(this);

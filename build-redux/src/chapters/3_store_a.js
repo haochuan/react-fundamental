@@ -23,7 +23,8 @@ const reducer = (state = initialState, action) => {
 // ====================== From Preview End =====================
 
 // The Store
-// hold onto our single state variable as well as some useful methods for setting and getting the state
+// hold our single state variable as well as
+// some useful methods for setting and getting the state
 
 // validate if the action is an non array object
 const validateAction = action => {
@@ -57,7 +58,7 @@ console.log('========== Store Test Start ==========');
 const store = createStore(initialState, reducer);
 console.log('INIT STORE: ', store.getState());
 store.dispatch({ type: INCREASE });
-console.log('INCREASE STORE: ', store.getState());
+console.log('DISPATCH INCREASE : ', store.getState());
 store.dispatch({ type: DECREASE });
-console.log('DECREASE STORE: ', store.getState());
+console.log('DISPATCH DECREASE : ', store.getState());
 console.log('========== Store Test End ==========');

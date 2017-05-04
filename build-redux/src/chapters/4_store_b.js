@@ -35,7 +35,8 @@ const validateAction = action => {
 
 // We have a store that can use any reducer we provide to manage the state.
 // But it's still missing an important bit: A way to subscribe to changes.
-// Currently even if the store change, the component has no way to know whether it should rerender
+// Currently even if the store change,
+// the component has no way to know whether it should rerender
 // We need to update the props or the component's own state to let the component know
 // what is the time to rerender
 
@@ -46,12 +47,15 @@ const createStore = (reducer, initialState) => {
     dispatch: action => {
       validateAction(action);
       state = reducer(state, action);
+      console.log('Action: ', action);
+      console.log('Current state: ', state);
       subscribers.forEach(handler => handler()); // handler here will call setState
     },
     getState: () => state,
     subscribe: handler => {
       // add handler into list
       subscribers.push(handler);
+      console.log('Subscribe: ', handler);
       // return unsubscribe function
       return () => {
         const index = subscribers.indexOf(handler);

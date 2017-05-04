@@ -42,12 +42,15 @@ const createStore = (reducer, initialState) => {
     dispatch: action => {
       validateAction(action);
       state = reducer(state, action);
+      console.log('Action: ', action);
+      console.log('Current State: ', state);
       subscribers.forEach(handler => handler());
     },
     getState: () => state,
     subscribe: handler => {
       // add handler into list
       subscribers.push(handler);
+      console.log('Subscribe: ', handler);
       // return unsubscribe function
       return () => {
         const index = subscribers.indexOf(handler);
@@ -101,8 +104,10 @@ Provider.childContextTypes = {
 //
 // connect is a HOC
 // more of a higher order factory
-// which takes two functions and returns a function that takes a component and returns a new component.
-// That component subscribes to the store and updates your component's props when there are changes.
+// which takes two functions and returns a function that takes a component
+// and returns a new component.
+// That component subscribes to the store and updates
+// your component's props when there are changes.
 //
 const connect = (
   mapStateToProps = () => ({}), // first function, return {} by default
@@ -113,9 +118,15 @@ const connect = (
       const { store } = this.context;
       const state = store.getState(); // redux state
       // take the current state from store then return some props
-      const stateProps = mapStateToProps(state, props);
+      /*
+       *{
+       *  a: state.a,
+       *  b: state.b
+       *}
+       */
+      const stateProps = mapStateToProps(state);
       // take dispatch from store then return some props
-      const dispatchProps = mapDispatchToProps(store.dispatch, props);
+      const dispatchProps = mapDispatchToProps(store.dispatch);
       // store those returned props into it's own state
       this.setState({
         ...stateProps,
@@ -156,7 +167,7 @@ const connect = (
 // 3. ComponentWillUnmount: unsubscribe
 // 4. render: return new component with all this.props and this.state mapped to this.props
 
-// takes store, returns new props using store
+// takes state, returns new props using state
 const mapStateToProps = state => ({
   counter: state.counter
 });
@@ -175,9 +186,9 @@ const mapDispatchToProps = dispatch => ({
 
 const Counter = ({ counter, increase, decrease }) => (
   <div className="App">
-    <p>{this.state.counter}</p>
-    <button onClick={this.increase}>Increase</button>
-    <button onClick={this.decrease}>Decrease</button>
+    <p className="counter-value">{counter}</p>
+    <button onClick={increase}>Increase</button>
+    <button onClick={decrease}>Decrease</button>
   </div>
 );
 
