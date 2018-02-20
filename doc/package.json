@@ -13,6 +13,7 @@
   "scripts": {
     "start": "gitbook serve",
     "build": "gitbook build",
+    "pdf": "gitbook pdf ./ ./javascript-training.pdf",
     "deploy": "pm2 start deploy.json"
   },
   "repository": {
