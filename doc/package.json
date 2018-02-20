@@ -4,13 +4,16 @@
   "description":
     "React is an open source library for creating composable interfaces, and it is maintained by Facebook. Since its initial public release, the library has experienced a fast adoption rate and a vibrant community has sprung up around it.",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.16.2"
+  },
   "devDependencies": {
     "gitbook-cli": "^2.3.2"
   },
   "scripts": {
     "start": "gitbook serve",
-    "build": "gitbook build"
+    "build": "gitbook build",
+    "deploy": "pm2 start deploy.json"
   },
   "repository": {
     "type": "git",

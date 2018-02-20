@@ -1,0 +1,13 @@
+{
+  "apps": [
+    {
+      "name": "react tutorial gitbook - 9999",
+      "script": "index.js",
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 9999
+      }
+    }
+  ]
+}
