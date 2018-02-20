@@ -14,7 +14,7 @@ cp -R _book/* ../
 git clean -fx _book
 
 # add all files
-git add .
+git add --all
 
 # commit
 git commit -a -m "Update docs"
