@@ -1,5 +1,5 @@
 # install the plugins and build the static site
-gitbook build
+npm run build
 
 # checkout to the gh-pages branch
 git checkout gh-pages
@@ -14,7 +14,7 @@ cp -R _book/* ..
 git clean -fx _book
 
 # add all files
-git add .
+git add all
 
 # commit
 git commit -a -m "Update docs"
