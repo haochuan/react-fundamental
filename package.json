@@ -1,0 +1,26 @@
+{
+  "name": "react-fundamental",
+  "version": "1.0.0",
+  "description":
+    "React is an open source library for creating composable interfaces, and it is maintained by Facebook. Since its initial public release, the library has experienced a fast adoption rate and a vibrant community has sprung up around it.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gitbook-cli": "^2.3.2"
+  },
+  "scripts": {
+    "start": "gitbook serve",
+    "build": "gitbook build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haochuan/react-fundamental.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haochuan/react-fundamental/issues"
+  },
+  "homepage": "https://github.com/haochuan/react-fundamental#readme"
+}
