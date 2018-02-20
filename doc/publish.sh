@@ -25,10 +25,3 @@ git push origin gh-pages
 # checkout to the master branch
 git checkout master
 
-# add all files
-git add all
-
-# commit
-git commit -a -m "Update docs"
-# checkout to the master branch
-git push origin master
