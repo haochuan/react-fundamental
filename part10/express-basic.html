@@ -278,45 +278,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="most-common-express-packages.html">
-            
-                <a href="most-common-express-packages.html">
-            
-                    
-                    Express App Popular Middlewares
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.6" data-path="restapi-best-practice.html">
-            
-                <a href="restapi-best-practice.html">
-            
-                    
-                    RestAPI Best Practice
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.7" data-path="homework-1.html">
-            
-                <a href="homework-1.html">
-            
-                    
-                    Homework 1
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -490,18 +451,6 @@ app.listen(<span class="hljs-number">3000</span>, () =&gt; <span class="hljs-bui
 app.use(<span class="hljs-string">&apos;/static&apos;</span>, express.static(path.join(__dirname, <span class="hljs-string">&apos;public&apos;</span>)));
 ...
 </code></pre>
-<h3 id="query-parameter">Query Parameter</h3>
-<p>In simple terms, a query string is the part of a URL (Uniform Resource Locater) after the question mark (?). It is meant to send small amounts of information to the server via the url. This information is usually used as parameters to query a database, or maybe to filter results. It&apos;s really up to you what they&apos;re used for.</p>
-<p>Here is an example of a URL with query strings attached:</p>
-<pre><code class="lang-js">http:<span class="hljs-comment">//localhost:3000/users?country=us&amp;time=2018-01-01&amp;gender=male</span>
-</code></pre>
-<p>So the qurey parameters which can be found in <code>req.query</code> in a object with pairs of keys and values:</p>
-<pre><code class="lang-js">{
-  country: <span class="hljs-string">&quot;us&quot;</span>,
-  time: <span class="hljs-string">&quot;2018-01-01&quot;</span>,
-  gender: <span class="hljs-string">&quot;male&quot;</span>
-}
-</code></pre>
 <h3 id="handling-404">Handling 404</h3>
 <p>In Express, 404 responses are not the result of an error, so the error-handler middleware will not capture them. This behavior is because a 404 response simply indicates the absence of additional work to do; in other words, Express has executed all middleware functions and routes, and found that none of them responded. All you need to do is add a middleware function at the very bottom of the stack (below all other functions) to handle a 404 response:</p>
 <pre><code class="lang-js">app.use(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>) </span>{
@@ -558,7 +507,7 @@ app.use(<span class="hljs-string">&apos;/static&apos;</span>, express.static(pat
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Express Basic","level":"1.3.1","depth":2,"next":{"title":"Express Middleware","level":"1.3.2","depth":2,"path":"part10/express-middleware.md","ref":"part10/express-middleware.md","articles":[]},"previous":{"title":"Unit 10 - Node.js, Express and Mongodb","level":"1.3","depth":1,"path":"part10/README.md","ref":"part10/README.md","articles":[{"title":"Express Basic","level":"1.3.1","depth":2,"path":"part10/express-basic.md","ref":"part10/express-basic.md","articles":[]},{"title":"Express Middleware","level":"1.3.2","depth":2,"path":"part10/express-middleware.md","ref":"part10/express-middleware.md","articles":[]},{"title":"Express Advanced Routing","level":"1.3.3","depth":2,"path":"part10/express-advanced-routing.md","ref":"part10/express-advanced-routing.md","articles":[]},{"title":"Express App Structure","level":"1.3.4","depth":2,"path":"part10/express-app-structure.md","ref":"part10/express-app-structure.md","articles":[]},{"title":"Express App Popular Middlewares","level":"1.3.5","depth":2,"path":"part10/most-common-express-packages.md","ref":"part10/most-common-express-packages.md","articles":[]},{"title":"RestAPI Best Practice","level":"1.3.6","depth":2,"path":"part10/restapi-best-practice.md","ref":"part10/restapi-best-practice.md","articles":[]},{"title":"Homework 1","level":"1.3.7","depth":2,"path":"part10/homework-1.md","ref":"part10/homework-1.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"part10/express-basic.md","mtime":"2018-02-20T06:43:52.040Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-20T07:03:53.096Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Express Basic","level":"1.3.1","depth":2,"next":{"title":"Express Middleware","level":"1.3.2","depth":2,"path":"part10/express-middleware.md","ref":"part10/express-middleware.md","articles":[]},"previous":{"title":"Unit 10 - Node.js, Express and Mongodb","level":"1.3","depth":1,"path":"part10/README.md","ref":"part10/README.md","articles":[{"title":"Express Basic","level":"1.3.1","depth":2,"path":"part10/express-basic.md","ref":"part10/express-basic.md","articles":[]},{"title":"Express Middleware","level":"1.3.2","depth":2,"path":"part10/express-middleware.md","ref":"part10/express-middleware.md","articles":[]},{"title":"Express Advanced Routing","level":"1.3.3","depth":2,"path":"part10/express-advanced-routing.md","ref":"part10/express-advanced-routing.md","articles":[]},{"title":"Express App Structure","level":"1.3.4","depth":2,"path":"part10/express-app-structure.md","ref":"part10/express-app-structure.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"part10/express-basic.md","mtime":"2018-02-20T07:05:46.866Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-20T07:12:39.202Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
