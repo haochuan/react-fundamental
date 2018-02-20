@@ -1,5 +1,10 @@
 # Express.js Basic
 
+### What is web server and how it works
+
+* [sample API](https://api.github.com/users/haochuan);
+* [sample page](https://github.com/haochuan)
+
 ### What is express.js
 
 Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
