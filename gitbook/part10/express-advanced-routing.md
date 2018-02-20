@@ -58,6 +58,23 @@ app.get('/users/:userId/books/:bookId', function(req, res) {
 });
 ```
 
+### Request Body
+
+Contains key-value pairs of data submitted in the request body. By default, it is undefined, and is populated when you use body-parsing middleware such as `body-parser`.
+
+The following example shows how to use body-parsing middleware to populate req.body.
+
+```js
+const app = require('express')();
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json()); // for parsing application/json
+
+app.post('/users', function(req, res) {
+  res.send(req.body);
+});
+```
+
 ### Express Router
 
 Use the `express.Router` class to create modular, mountable route handlers. A `Router` instance is a complete middleware and routing system; for this reason, it is often referred to as a "mini-app".

@@ -146,6 +146,26 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 ...
 ```
 
+### Query Parameter
+
+In simple terms, a query string is the part of a URL (Uniform Resource Locater) after the question mark (?). It is meant to send small amounts of information to the server via the url. This information is usually used as parameters to query a database, or maybe to filter results. It's really up to you what they're used for.
+
+Here is an example of a URL with query strings attached:
+
+```js
+http://localhost:3000/users?country=us&time=2018-01-01&gender=male
+```
+
+So the qurey parameters which can be found in `req.query` in a object with pairs of keys and values:
+
+```js
+{
+  country: "us",
+  time: "2018-01-01",
+  gender: "male"
+}
+```
+
 ### Handling 404
 
 In Express, 404 responses are not the result of an error, so the error-handler middleware will not capture them. This behavior is because a 404 response simply indicates the absence of additional work to do; in other words, Express has executed all middleware functions and routes, and found that none of them responded. All you need to do is add a middleware function at the very bottom of the stack (below all other functions) to handle a 404 response:

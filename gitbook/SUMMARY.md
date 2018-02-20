@@ -16,7 +16,10 @@
   * [Express Middleware](part10/express-middleware.md)
   * [Express Advanced Routing](part10/express-advanced-routing.md)
   * [Express App Structure](part10/express-app-structure.md)
+  * [Express App Popular Middlewares](part10/most-common-express-packages.md)
+  * [RestAPI Best Practice](part10/restapi-best-practice.md)
+  * [Homework 1](part10/homework-1.md)
 
-* [Unit 11 - Introduction to React](part11/README.md)
+- [Unit 11 - Introduction to React](part11/README.md)
 
-* [Unit 12 - React and Redux](part12/README.md)
+- [Unit 12 - React and Redux](part12/README.md)
