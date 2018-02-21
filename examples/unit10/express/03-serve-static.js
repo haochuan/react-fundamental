@@ -14,6 +14,7 @@ app.listen(3000, function(req, res) {
 });
 
 app.use(express.static('public'));
+// app.use('/static', express.static('public'));
 // Use absolute path
 // If you run the app from other location
 // rather than the 'project root',

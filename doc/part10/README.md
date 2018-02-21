@@ -17,6 +17,7 @@
 
 ### Express and Mongodb
 
+* [MongoDB Basic](mongodb-basic.md)
 * [Express and Mongodb - Setup](express-mongodb-setup.md)
 * [Express and Mongodb - Client](express-mongodb-client.md)
 * [Express and Mongodb - CRUD](express-mongodb-crud.md)
