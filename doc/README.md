@@ -25,6 +25,9 @@ React is an open source library for creating composable interfaces, and it is ma
   * [Express App Structure](part10/express-app-structure.md)
   * [Express App Popular Middlewares](part10/most-common-express-packages.md)
   * [RestAPI Best Practice](part10/restapi-best-practice.md)
+  * [Express and Mongodb - Setup](part10/express-mongodb-setup.md)
+  * [Express and Mongodb - Client](part10/express-mongodb-client.md)
+  * [Express and Mongodb - CRUD](part10/express-mongodb-crud.md)
   * [Homework 1](part10/homework-1.md)
 
 * [Unit 11 - Introduction to React](part11/README.md)
