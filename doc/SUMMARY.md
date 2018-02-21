@@ -23,6 +23,6 @@
   * [Express and Mongodb - CRUD](part10/express-mongodb-crud.md)
   * [Homework 1](part10/homework-1.md)
 
-- [Unit 11 - Introduction to React](part11/README.md)
+- [Unit 11 - Introduction to React]()
 
-- [Unit 12 - React and Redux](part12/README.md)
+- [Unit 12 - React and Redux]()
