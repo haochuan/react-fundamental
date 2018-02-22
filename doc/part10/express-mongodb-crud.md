@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // create user schema
-var userSchema = new Schema({
+const userSchema = new Schema({
   firstName: String,
   lastName: String,
   username: {type: String, required: true, unique: true},
@@ -40,14 +40,14 @@ Following are all valid Schema Types.
 
 Here is the [link to the official documentation for `SchemaType`](http://mongoosejs.com/docs/schematypes.html), where you can find details for other parameters for a property in the `Schema`.
 
-Then let's the `User` model using the `userSchema`:
+Then let's create the `User` model using the `userSchema`:
 
 ```js
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // create user schema
-var userSchema = new Schema({
+const userSchema = new Schema({
   firstName: String,
   lastName: String,
   username: {type: String, required: true, unique: true},
@@ -66,43 +66,6 @@ module.exports = User;
 ```
 
 So now we have our first model `User`, what can we do with the new model?
-
----
-
-### Create
-
-Suppose we already created the model `User`, we can use the model to:
-
-* Create and save new document based on the model
-
-```js
-const haochuan = new User({...})
-haochuan.save((err) => console.log(err));
-```
-
-**NOTE: we use the word `document` to describe the actual data , and `colletion` to describe a set of data in mongodb. In mysql word, we call them `row` and `table`.**
-
----
-
-### Run a function before saving
-
-We also want to have a `created_at` variable to know when the record was created, as well as a `update_at` variable to know when the record was updated . We can use the Schema `pre` method to have operations happen before an object is saved.
-
-```js
-// on every save, add the date
-userSchema.pre('save', function(next) {
-  // get the current date
-  var currentDate = new Date();
-
-  // change the updated_at field to current date
-  this.updated_at = currentDate;
-
-  // if created_at doesn't exist, add to that field
-  if (!this.created_at) this.created_at = currentDate;
-
-  next();
-});
-```
 
 ---
 
@@ -227,7 +190,7 @@ User.findOneAndRemove({username: 'haochuan'}, function(err) {
 });
 ```
 
-* Get then remove
+* Find by Id then remove
 
 ```js
 // find the user with id 1
@@ -238,3 +201,27 @@ User.findByIdAndRemove(1, function(err) {
   console.log('User deleted!');
 });
 ```
+
+---
+
+### Run a function before saving
+
+We also want to have a `created_at` variable to know when the record was created, as well as a `update_at` variable to know when the record was updated . We can use the Schema `pre` method to have operations happen before an object is saved.
+
+```js
+// on every save, add the date
+userSchema.pre('save', function(next) {
+  // get the current date
+  const currentDate = new Date();
+
+  // change the updated_at field to current date
+  this.updated_at = currentDate;
+
+  // if created_at doesn't exist, add to that field
+  if (!this.created_at) this.created_at = currentDate;
+
+  next();
+});
+```
+
+---

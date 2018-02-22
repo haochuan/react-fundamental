@@ -34,6 +34,17 @@ use <database>
 
 ---
 
+### CURD
+
+CRUD is an acronym for Create, Read, Update and Delete, which are 4 types of operations in MongoDB.
+
+* Create - add new documents to a collection
+* Read - retrieve documents from a collection
+* Update - modify existing documents in a collection
+* Remove - remove documents from a collection
+
+---
+
 ### Create Operations
 
 Create or insert operations add new documents to a collection. If the collection does not currently exist, insert operations will create the collection.
@@ -49,7 +60,7 @@ For example:
 
 ---
 
-### React Operation
+### Read Operation
 
 Read operations retrieves documents from a collection; i.e. queries a collection for documents. MongoDB provides the following methods to read documents from a collection:
 

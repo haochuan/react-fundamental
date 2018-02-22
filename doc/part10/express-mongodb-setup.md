@@ -1,5 +1,13 @@
 # Mongodb and Express - Setup
 
+### Why use MongoDB/Mongoose
+
+* Node.js and MongoDB are a pair made for each other. Being able to use JSON across the board and JavaScript makes development very easy.
+* Mongoose is an object modeling package for Node that essentially works like an ORM.
+* Mongoose allows us to have access to the MongoDB commands for CRUD simply and easily.
+
+---
+
 ### Adding Mongoose to Express Application
 
 MongoDB provide native driver for Node.js called “mongodb” which you can use to connect to MongoDB and perform various CRUD operation. There is another more popular MongoDB recommended node module called “mongoose” and this one we are going to use.
@@ -27,7 +35,7 @@ db.once('open', function() {
 
 ---
 
-### What is CRUD
+### CRUD And RestFul API
 
 CRUD is an acronym for Create, Read, Update and Delete. It is a set of operations we get servers to execute (POST, GET, PUT and DELETE respectively). This is what each operation does:
 
@@ -35,13 +43,5 @@ CRUD is an acronym for Create, Read, Update and Delete. It is a set of operation
 * Read (GET)\_- Get something
 * Update (PUT) - Change something
 * Delete (DELETE)- Remove something
-
----
-
-### Get Started with Mongoose
-
-* Node.js and MongoDB are a pair made for each other. Being able to use JSON across the board and JavaScript makes development very easy.
-* Mongoose is an object modeling package for Node that essentially works like an ORM.
-* Mongoose allows us to have access to the MongoDB commands for CRUD simply and easily.
 
 ---

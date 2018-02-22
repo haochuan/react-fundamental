@@ -1,68 +1,8 @@
-# Mongodb Basic
-
-### What is Mongodb?
-
-MongoDB is a cross-platform, document oriented database that provides, high performance, high availability, and easy scalability. MongoDB works on concept of collection and document.
-
-##### Database
-
-Database is a physical container for collections. Each database gets its own set of files on the file system. A single MongoDB server typically has multiple databases.
-
-##### Collection
-
-Collection is a group of MongoDB documents. It is the equivalent of an RDBMS table. A collection exists within a single database. Collections do not enforce a schema. Documents within a collection can have different fields. Typically, all documents in a collection are of similar or related purpose.
-
-##### Document
-
-A document is a set of key-value pairs. Documents have dynamic schema. Dynamic schema means that documents in the same collection do not need to have the same set of fields or structure, and common fields in a collection's documents may hold different types of data.
-
----
-
-### Why Use Mongodb
-
-Organizations of all sizes are adopting MongoDB because it enables them to build applications faster, handle highly diverse data types, and manage applications more efficiently at scale.
-
-* Development is simplified as MongoDB documents map naturally to modern, object-oriented programming languages.
-* MongoDB can be easily scaled within and across multiple distributed data centers.
-* Working with data as flexible JSON documents, rather than as rigid rows and columns, is proven to help developers move faster.
-
----
-
-### Query Language Comparison
-
-MySQL
-
-```
-INSERT INTO users (user_id, age, status)VALUES ('bcd001', 45, 'A')
-
-SELECT * FROM users
-
-UPDATE users SET status = 'C' WHERE age > 25
-```
-
-MongoDB
-
-```
-db.users.insert({
-  user_id: 'bcd001',
-  age: 45,
-  status: 'A'
-});
-
-db.users.find();
-
-db.users.update(
-  { age: { $gt: 25 } },
-  { $set: { status: 'C' } },
-  { multi: true }
-)
-```
-
----
+# Mongodb Setup
 
 ### Mongodb Installation
 
-Download and follow the instructions here: https://www.mongodb.com/download-center?jmp=nav#community
+Download and follow the instructions here: https://www.mongodb.com/download-center. Please select the community server to download.
 
 ---
 
@@ -78,9 +18,21 @@ The following example command creates the default /data/db directory:
 mkdir -p /data/db
 ```
 
+If you see the error `mkdir: /data/db: Permission denied`, please try
+
+```
+sudo mkdir -p /data/db
+```
+
 * Set permissions for the data directory
 
-Before running mongod for the first time, ensure that the user account running mongod has read and write permissions for the directory.
+Before running mongod for the first time, ensure that the user account running mongod has read and write permissions for the directory. If you see the error `Attempted to create a lock file on a read-only directory: /data/db, terminating`, which means the mongoDB server tried to create some files inside the read-only directory /data/db. To fix this, you need to also give the write ability to /data/db:
+
+```
+sudo chmod -R a+w /data
+```
+
+**NOTE: The easist way is to create a directory which you (the current user) has both read and write permissions by default to store the data, for example: `~/data/db`.**
 
 * Run MongoDB
 
