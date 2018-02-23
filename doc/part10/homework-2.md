@@ -12,22 +12,22 @@ In this homework we are going to write an express.js RestFul API server to simul
   * `post` - to store posts in Friend Circle
   * `like` - to store likes for posts
 
-* Every document in `user` collection should have:
+- Every document in `user` collection should have:
 
-  * `id`
+  * `id` (You can use the default `_id` created by mongoDB)
   * `name`
   * `gender`
   * `location`
   * `bio`
 
-* Every document in `post` collection should have:
-  * `id`
+- Every document in `post` collection should have:
+  * `id` (You can use the default `_id` created by mongoDB)
   * `content`
   * `created_at` - the time when you create this post
   * `userId` - which user this post belongs to
 
-- Every document in `like` collection should have:
-  * `id`
+* Every document in `like` collection should have:
+  * `id` (You can use the default `_id` created by mongoDB)
   * `userId` - who makes the like
   * `postId` - which post this like belongs to
 

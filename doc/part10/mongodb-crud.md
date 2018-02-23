@@ -17,7 +17,7 @@ mongo
 * To show the list of databases:
 
 ```
-db show
+show dbs
 ```
 
 * To display the database you are using:

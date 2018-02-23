@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const db = mongoose.connection;
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
 function init() {
-  mongoose.connect('mongodb://127.0.0.1:27017/yourDatabase');
+  mongoose.connect('mongodb://127.0.0.1:27017/test');
 }
 db.once('open', function() {
   console.log('mongodb connected.');
@@ -24,16 +24,16 @@ const userSchema = new Schema({
   updated_at: Date
 });
 
-const User = mongoose.model('User', userSchema);
+// const User = mongoose.model('User', userSchema);
 
 // -------------------------------------- READ -------------------------------------//
 // get all the users
-User.find({}, function(err, users) {
-  if (err) throw err;
+// User.find({}, function(err, users) {
+// if (err) throw err;
 
-  // object of all the users
-  console.log(users);
-});
+// // object of all the users
+// console.log(users);
+// });
 
 // get the user with username haochuan
 // User.find({ username: 'haochuan' }, function(err, user) {
