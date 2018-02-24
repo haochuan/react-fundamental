@@ -74,3 +74,51 @@ class App extends Component {
   }
 }
 ```
+
+**IMPORTANT: Instead of writing two components in a single file, we usually prefer one component per file:**
+
+Suppose we design the Text component in a separate file `Text.js`:
+
+```js
+// Text.js
+import React, {Component} from 'react';
+
+class Text extends Component {
+  render() {
+    console.log(this.props);
+    // {
+    //   stringProps: "I am a string",
+    //   numberProps: 1,
+    //   objectProps: {a: 1, b: 2, c: 3},
+    //   arrayProps: [1, 2, 3, 4, 5]
+    // }
+    return <p>{this.props.text}</p>;
+  }
+}
+
+export default Text;
+```
+
+And in order to use the Text component in our main component, we just need to import Text component:
+
+```js
+import React, {Component} from 'react';
+import Text from './Text.js';
+
+class App extends Component {
+  render() {
+    const stringProps = 'I am a string';
+    const numberProps = 1;
+    const objectProps = {a: 1, b: 2, c: 3};
+    const arrayProps = [1, 2, 3, 4, 5];
+    return (
+      <Text
+        stringProps={stringProps}
+        numberProps={numberProps}
+        objectProps={objectProps}
+        arrayProps={arrayProps}
+      />
+    );
+  }
+}
+```

@@ -41,9 +41,9 @@ React is an open source library for creating composable interfaces, and it is ma
   * [JSX Syntax](part11/jsx-basic.md)
   * [React Component](part11/component.md)
   * [Props](part11/props.md)
+  * [Handling Events](part11/handling-events.md)
   * [State](part11/state.md)
   * [Component LifeCycle](part11/component-lifecycle.md)
-  * [Handling Events](part11/handling-events.md)
   * [Conditional Rendering](part11/conditional-rendering.md)
   * [List and Keys](part11/list-and-keys.md)
 
