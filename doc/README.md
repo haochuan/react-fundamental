@@ -46,5 +46,10 @@ React is an open source library for creating composable interfaces, and it is ma
   * [Component LifeCycle](part11/component-lifecycle.md)
   * [Conditional Rendering](part11/conditional-rendering.md)
   * [List and Keys](part11/list-and-keys.md)
+  * [Handling Form](part11/handling-form.md)
+  * [Make HTTP Request](part11/make_request.md)
+  * [Homework 1](part11/homework-1.md)
+  * [Homework 2](part11/homework-2.md)
+  * [Homework 3](part11/homework-3.md)
 
 * [Unit 12 - React and Redux]()

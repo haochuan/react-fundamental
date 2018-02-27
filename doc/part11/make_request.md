@@ -158,12 +158,13 @@ function List(props) {
 class App extends Component {
   constructor(props) {
     super(props);
-    // remember that you have to initialize the same data type for the result you want to get in state
+    // remember that you have to initialize
+    // the same data type for the result you want to get in state
     this.state = {data: []};
   }
   componentWillMount() {
     // componentWillMount is the right place to get some data to render the page
-    axios({method: 'get', url: 'https://api.github.com/sers'})
+    axios({method: 'get', url: 'https://api.github.com/users'})
       .then(response => {
         console.log(response);
         this.setState({data: response.data});

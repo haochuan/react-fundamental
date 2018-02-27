@@ -10,3 +10,8 @@
 * [Component LifeCycle](component-lifecycle.md)
 * [Conditional Rendering](conditional-rendering.md)
 * [List and Keys](list-and-keys.md)
+* [Handling Form](handling-form.md)
+* [Make HTTP Request](make_request.md)
+* [Homework 1](homework-1.md)
+* [Homework 2](homework-2.md)
+* [Homework 3](homework-3.md)
