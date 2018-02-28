@@ -40,11 +40,11 @@ http://example.com/#/users
 
 The `<Route>` component is the most important component in React router. It renders some UI if the current location matches the route’s path. Ideally, a <Route> component should have a prop named path, and if the pathname is matched with the current location, it gets rendered.
 
-Suppose we already have `<Home>`, `<About>`, `<User>` three React components defined:
+Suppose we already have `<Home>`, `<About>`, `<Users>` three React components defined:
 
 * You want to see the page rendering `<Home>` component if you go to the url `/`
 * You want to see the page rendering `<About>` component if you go to the url `/about`
-* You want to see the page rendering `<User>` component if you go to the url `/user`
+* You want to see the page rendering `<Users>` component if you go to the url `/users`
 
 ```js
 import {BrowserRouter} from 'react-router-dom';
@@ -58,7 +58,7 @@ class App extends React.Component {
         URL */
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />
-        <Route path="/user" component={User} />
+        <Route path="/users" component={Users} />
       </div>
     );
   }
@@ -74,14 +74,14 @@ The `<Link>` component is used to navigate between pages. It’s comparable to t
 ```js
 <Link to="/">Home</Link>
 <Link to="/about">About</Link>
-<Link to="/user">User</Link>
+<Link to="/users">Users</Link>
 ```
 
 In the example:
 
 * We use the `<Link>` component to create a simple text UI, set "/" as the value of the `to` props, which will make the page go to `/` if you click it.
 * We use the `<Link>` component to create a simple text UI, set "/about" as the value of the `to` props, which will make the page go to `/about` if you click it.
-* We use the `<Link>` component to create a simple text UI, set "/user" as the value of the `to` props, which will make the page go to `/user` if you click it.
+* We use the `<Link>` component to create a simple text UI, set "/users" as the value of the `to` props, which will make the page go to `/users` if you click it.
 
 ---
 
@@ -105,10 +105,10 @@ const About = () => (
   </div>
 );
 
-/* User component */
-const User = () => (
+/* Users component */
+const Users = () => (
   <div>
-    <h2>User</h2>
+    <h2>Users</h2>
   </div>
 );
 
@@ -127,13 +127,13 @@ class App extends Component {
                 <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to="/user">User</Link>
+                <Link to="/users">Users</Link>
               </li>
             </ul>
           </nav>
           <Route path="/" component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/user" component={User} />
+          <Route path="/users" component={Users} />
         </div>
       </BrowserRouter>
     );
@@ -141,10 +141,159 @@ class App extends Component {
 }
 ```
 
-You will notice that there is a little bug in this demo: When you click `About` or `User`, you can still see the text Home in the UI. This is because `/about` matches both `/` and `/about` and `/user` matches both `/` and `/user`. That's why you will see the extra "Home" text. If you want to avoid that and want a route to be rendered only if the path is exactly the same, you should use the `exact` props in `<Route>`.
+You will notice that there is a little bug in this demo: When you click `About` or `Users`, you can still see the text Home in the UI. This is because `/about` matches both `/` and `/about` and `/users` matches both `/` and `/users`. That's why you will see the extra "Home" text. If you want to avoid that and want a route to be rendered only if the path is exactly the same, you should use the `exact` props in `<Route>`.
 
 ```js
 <Route exact={true} path="/" component={Home} />
 <Route path="/about" component={About} />
-<Route path="/user" component={User} />
+<Route path="/users" component={Users} />
 ```
+
+---
+
+### Switch
+
+Think about what will happen if you go to `/users` in the following code:
+
+```js
+/* Home component */
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+);
+
+/* About component */
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+);
+
+/* Users component */
+const Users = () => (
+  <div>
+    <h2>Users</h2>
+  </div>
+);
+/* AnotherPage component */
+const AnotherPage = () => (
+  <div>
+    <h2>Another Page</h2>
+  </div>
+);
+
+/* App component */
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/users">Users</Link>
+              </li>
+              <li>
+                <Link to="/anotherPage">Another Page</Link>
+              </li>
+            </ul>
+          </nav>
+          <Route exact={true} path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/users" component={Users} />
+          <Route path="/:pageName" component={AnotherPage} />
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+```
+
+If the URL is `/users`, all the routes that match the location `/users` are rendered. So, the `<Route>` with path :pageName gets rendered along with the Users component. This is by design. However, if this is not the behavior you’re expecting, you should add the `<Switch>` component to your routes. With `<Switch>,` only the first child `<Route>` that matches the location gets rendered.
+
+```js
+import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
+
+/* Home component */
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+);
+
+/* About component */
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+);
+
+/* Users component */
+const Users = () => (
+  <div>
+    <h2>Users</h2>
+  </div>
+);
+/* AnotherPage component */
+const AnotherPage = () => (
+  <div>
+    <h2>Another Page</h2>
+  </div>
+);
+
+/* App component */
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/users">Users</Link>
+              </li>
+              <li>
+                <Link to="/anotherPage">Another Page</Link>
+              </li>
+            </ul>
+          </nav>
+          <Switch>
+            <Route exact={true} path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/users" component={Users} />
+            <Route path="/:pageName" component={AnotherPage} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+```
+
+What will happen if we define the routes in the following order?
+
+```js
+<Switch>
+  <Route exact={true} path="/" component={Home} />
+  <Route path="/:pageName" component={AnotherPage} />
+  <Route path="/about" component={About} />
+  <Route path="/users" component={Users} />
+</Switch>
+```
+
+When you go to `/users`, the `/:pageName` will get matched first and the `<AnotherPage>` component will be rendered. Since `<Switch>` will only render the first matched route, so `<Users>` will never be rendered.
+
+In that case, we have a specific `<Route>` to handle `/about` or `/users`. We need to put the route for `/:pageName` after `/about` and `/users`.
