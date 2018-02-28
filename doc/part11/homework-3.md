@@ -2,7 +2,7 @@
 
 In this homework, we are going to practice sending HTTP request in React and build a web application to view github users. First of all we will send a GET HTTP request to get 100 users from github, and render those data in the UI. Then every time when we click one of the user in the list, we will show the detail user information in the UI.
 
-![Example](http://g.recordit.co/MoPvnQhY6N.gif)
+![Example](../diagram/dist/react-homework-3.gif)
 
 * Use the endpoint (https://api.github.com/users?per_page=100) to get 100 users from github, then make a list of user UIs in your web application showing user id, username (should be in key: login in the HTTP response) and user avatar images.
 * You also need to have a place in your UI to show user details once you click one of the user in the user list. Suppose that one of the user data you get from is like:

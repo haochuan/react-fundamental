@@ -9,4 +9,4 @@ Build simple timer web application using React:
 
 This is what we are going to build. Again if you don't have the extra time on styling and css, that's totally fine. Just focus on the core React part and keep the UI as simple as possible.
 
-![Example](http://g.recordit.co/XtqhrnXmZy.gif)
+![Example](../diagram/dist/react-homework-2.gif)
