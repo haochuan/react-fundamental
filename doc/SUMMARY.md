@@ -28,6 +28,7 @@
   * [Interview Questions](part10/interview-questions.md)
 
 * [Unit 11 - Introduction to React](part11/README.md)
+
   * [What is React](part11/what-is-react.md)
   * [Project Setup](part11/setup-project.md)
   * [JSX Syntax](part11/jsx-basic.md)
@@ -44,4 +45,9 @@
   * [Homework 2](part11/homework-2.md)
   * [Homework 3](part11/homework-3.md)
 
-- [Unit 12 - React and Redux]()
+* [Unit 12 - React Router](part12/README.md)
+
+  * [React Router Basic](part12/react-router-basic.md)
+  * [Nested Routing](part12/nested-routing.md)
+  * [Protected Routing](part12/protected-routing.md)
+  * [Homework 1](part12/homework-1.md)
