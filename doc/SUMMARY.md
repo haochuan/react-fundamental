@@ -10,7 +10,7 @@
   * [Class](part1/6.md)
   * [Modules](part1/7.md)
 
-* [Unit 10 - Node.js, Express and Mongodb](part10/README.md)
+* [Node.js, Express and Mongodb](part10/README.md)
 
   * [Express Basic](part10/express-basic.md)
   * [Express Middleware](part10/express-middleware.md)
@@ -27,7 +27,7 @@
   * [Homework 2](part10/homework-2.md)
   * [Interview Questions](part10/interview-questions.md)
 
-* [Unit 11 - Introduction to React](part11/README.md)
+* [Introduction to React](part11/README.md)
 
   * [What is React](part11/what-is-react.md)
   * [Project Setup](part11/setup-project.md)
@@ -45,7 +45,7 @@
   * [Homework 2](part11/homework-2.md)
   * [Homework 3](part11/homework-3.md)
 
-* [Unit 12 - React Router](part12/README.md)
+* [React Router](part12/README.md)
 
   * [React Router Basic](part12/react-router-basic.md)
   * [Nested Routing](part12/nested-routing.md)
