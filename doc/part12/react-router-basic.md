@@ -47,19 +47,39 @@ Suppose we already have `<Home>`, `<About>`, `<Users>` three React components de
 * You want to see the page rendering `<Users>` component if you go to the url `/users`
 
 ```js
-import {BrowserRouter} from 'react-router-dom';
-import {Route} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
+
+/* Home component */
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+);
+
+/* About component */
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+);
+
+/* Users component */
+const Users = () => (
+  <div>
+    <h2>Users</h2>
+  </div>
+);
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        /* Route components are rendered if the path prop matches the current
-        URL */
-        <Route path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/users" component={Users} />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Route path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/users" component={Users} />
+        </div>
+      </BrowserRouter>
     );
   }
 }

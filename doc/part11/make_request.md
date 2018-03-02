@@ -162,8 +162,8 @@ class App extends Component {
     // the same data type for the result you want to get in state
     this.state = {data: []};
   }
-  componentWillMount() {
-    // componentWillMount is the right place to get some data to render the page
+  componentDidMount() {
+    // componentDidMount is the right place to get some data to render the page
     axios({method: 'get', url: 'https://api.github.com/users'})
       .then(response => {
         console.log(response);
