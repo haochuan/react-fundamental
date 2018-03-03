@@ -1,14 +1,14 @@
 # Webpack Basic
 
-This section aims to give you a little taste of what is happening behind the scene in order to run your React code inside browsers at a very high level. If you are using `create-react-app`, you do not need to worry about anything we will talk about here since `create-react-app` has already done all the configuration for you. This topic can go much deeper, but that is not the requirement for this course and what we should be focused on.
+This section aims to give you a little taste of what is happening behind the scene in order to run your React code inside browsers at a very high level. If you are using `create-react-app`, you do not need to worry about anything we will talk about here since `create-react-app` has already done all the configuration for you. This topic can go much deeper, but those advanced topics are not required for this course and are not what we should be focused on.
 
-Before we jupm into the topic, let's take a look at those "statements":
+Before we jump into the topic, let's take a look at some "statements":
 
 * React components are mostly written in Javascript ES6 with JSX syntax.
 * Browsers can understand some parts of ES6, but not all.
 * Broswers have no idea about what JSX is and how to run that.
 
-In that case, in order to run our React code in the browswer, you have to do some transformation work, to make the browser understand the code.
+In that case, in order to run our React code in the browser, you have to do some transformation work, to make the browser understand the code.
 
 ### [Babel](https://babeljs.io/)
 
@@ -21,6 +21,14 @@ Babel is a tool that helps you write code in the latest version of JavaScript. W
 ### [Webpack](https://webpack.js.org/)
 
 > webpack is a static module bundler for modern JavaScript applications.
+
+In most programming languages (including ECMAScript 2015+, which is one of the most recent versions of the standard for JavaScript, but isn’t fully supported across all browsers yet), you can separate your code into multiple files and import those files into your application to use the functionality contained in them. This wasn’t built into browsers, so module bundlers were built to bring this capability in a couple forms: by asynchronously loading modules and running them when they have finished loading, or by combining all of the necessary files into a single JavaScript file that would be loaded via a `<script>` tag in the HTML.
+
+Without the module loaders and bundlers, you could always combine your files manually or load your HTML with countless `<script>` tags.
+
+```html
+
+```
 
 ---
 
@@ -113,6 +121,7 @@ module.exports = config;
 ```
 
 * An entry point indicates which module webpack should use to begin to compile.
+* mode is the environment variable for webpack when it's doing the transformation work. If the mode is `production`, webpack will do a lot of optimization for production use.
 * The output property tells webpack where to emit the bundles it creates and how to name these files.
 
 Add a new npm script to run webpack:

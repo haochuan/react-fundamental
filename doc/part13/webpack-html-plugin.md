@@ -1,6 +1,6 @@
 # Webpack HTML Plugin
 
-To display our React form we must tell Webpack to produce an HTML page. The resulting bundle will be placed inside a `<script></script>` tag.
+To display our React code we must tell Webpack to produce an HTML page. The resulting compiled bundle will be placed inside a `<script></script>` tag.
 
 Webpack needs on additional component for processing HTML: `html-webpack-plugin`.
 

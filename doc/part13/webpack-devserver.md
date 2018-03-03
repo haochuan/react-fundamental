@@ -1,8 +1,8 @@
 # Webpack Dev Server
 
-Up to now, we have covered how to make React Component really work in browsers. The only issue is that there is no server to serve the final compiled HTML file. So every time you make a single change in your code, you have to `npm run compile` to get the compiled version of JS and HTML files, then open the HTML file in your browser. For production use it could be fine, but it is inconvenient for development use.
+Up to now, we have covered how to make React Component really work in browsers. The only issue is that there is no server to serve the final compiled HTML file. So every time you make a single change in your code, you have to `npm run compile` to get the compiled version of JS and HTML files, then open the HTML file in your browser. it is inconvenient for development use.
 
-We need find a way to watch the change in you code, compile the JS files when you maka any change, and then serve the latest HTML to the browser.
+We need find a way to watch the change in you code, compile the JS files when you maka any change, and then serve the latest HTML and Javascript to the browser.
 
 It takes only 3 lines of configuration to have a development server up and running.
 
