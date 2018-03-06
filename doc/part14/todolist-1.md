@@ -1,4 +1,4 @@
-# Todo List Example - Reducer
+# Todo List Example - Todo Reducer
 
 After we know the structure of the state, next is to write the reducer.
 
