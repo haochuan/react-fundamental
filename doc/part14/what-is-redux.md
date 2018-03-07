@@ -19,6 +19,12 @@ It is recommended to consider using Redux right from the start. Another opinion 
 
 ---
 
+### Flux Architecture
+
+![Example](../diagram/dist/flux.png)
+
+---
+
 ### Three Principles
 
 * Single source of truth
