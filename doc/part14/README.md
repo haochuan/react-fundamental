@@ -17,3 +17,5 @@
 * [Todolist - TodoList Component](todolist-9.md)
 * [Todolist - Filter Component](todolist-10.md)
 * [Redux Dev Tool](redux-dev-tool.md)
+* [Redux Middleware](redux-middleware.md)
+* [Async Action](async-action.md)
