@@ -184,3 +184,9 @@ const action = thunkAction();
 store.dispatch(action);
 // for this action, what will happen in redux-thunk middleware?
 ```
+
+---
+
+### Github User List Example
+
+https://github.com/haochuan/react-fundamental/tree/master/examples/redux/github-userlist
