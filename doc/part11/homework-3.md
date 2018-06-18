@@ -1,71 +1,12 @@
 # Homework Three
 
-In this homework, we are going to practice sending HTTP request in React and build a web application to view github users. First of all we will send a GET HTTP request to get 100 users from github, and render those data in the UI. Then every time when we click one of the user in the list, we will show the detail user information in the UI.
+Build simple timer web application using React:
 
-![Example](../diagram/dist/react-homework-3.gif)
+* You need to have a UI to show the current number in the timer.
+* You need to have a button to toggle the timer. If the time has not started yet or has been stopped, the text on the button should be "start". Otherwise the text should be "stop".
+* You need to have a reset button to reset the number of the time to 0. Please note that if you press the reset button while the timer is running, the time should not stop and will start from 0 again.
+* Suppose that you started the timer and stopped it at 3 (second), when you start the timer again without reset, the timer should continue running start from 3.
 
-* Use the endpoint (https://api.github.com/users?per_page=100) to get 100 users from github, then make a list of user UIs in your web application showing user id, username (should be in key: login in the HTTP response) and user avatar images.
-* You also need to have a place in your UI to show user details once you click one of the user in the user list. Suppose that one of the user data you get from is like:
+This is what we are going to build. Again if you don't have the extra time on styling and css, that's totally fine. Just focus on the core React part and keep the UI as simple as possible.
 
-```js
-{
-"login": "mojombo",
-"id": 1,
-"avatar_url": "https://avatars0.githubusercontent.com/u/1?v=4",
-"gravatar_id": "",
-"url": "https://api.github.com/users/mojombo",
-"html_url": "https://github.com/mojombo",
-"followers_url": "https://api.github.com/users/mojombo/followers",
-"following_url": "https://api.github.com/users/mojombo/following{/other_user}",
-"gists_url": "https://api.github.com/users/mojombo/gists{/gist_id}",
-"starred_url": "https://api.github.com/users/mojombo/starred{/owner}{/repo}",
-"subscriptions_url": "https://api.github.com/users/mojombo/subscriptions",
-"organizations_url": "https://api.github.com/users/mojombo/orgs",
-"repos_url": "https://api.github.com/users/mojombo/repos",
-"events_url": "https://api.github.com/users/mojombo/events{/privacy}",
-"received_events_url": "https://api.github.com/users/mojombo/received_events",
-"type": "User",
-"site_admin": false
-}
-```
-
-You can get the user detail data by using the value in the "login" key: https://api.github.com/users/mojombo:
-
-```js
-{
-"login": "mojombo",
-"id": 1,
-"avatar_url": "https://avatars0.githubusercontent.com/u/1?v=4",
-"gravatar_id": "",
-"url": "https://api.github.com/users/mojombo",
-"html_url": "https://github.com/mojombo",
-"followers_url": "https://api.github.com/users/mojombo/followers",
-"following_url": "https://api.github.com/users/mojombo/following{/other_user}",
-"gists_url": "https://api.github.com/users/mojombo/gists{/gist_id}",
-"starred_url": "https://api.github.com/users/mojombo/starred{/owner}{/repo}",
-"subscriptions_url": "https://api.github.com/users/mojombo/subscriptions",
-"organizations_url": "https://api.github.com/users/mojombo/orgs",
-"repos_url": "https://api.github.com/users/mojombo/repos",
-"events_url": "https://api.github.com/users/mojombo/events{/privacy}",
-"received_events_url": "https://api.github.com/users/mojombo/received_events",
-"type": "User",
-"site_admin": false,
-"name": "Tom Preston-Werner",
-"company": null,
-"blog": "http://tom.preston-werner.com",
-"location": "San Francisco",
-"email": null,
-"hireable": null,
-"bio": null,
-"public_repos": 59,
-"public_gists": 62,
-"followers": 20815,
-"following": 11,
-"created_at": "2007-10-20T05:24:19Z",
-"updated_at": "2018-02-26T20:05:14Z"
-}
-```
-
-Choose some fields to show as the user detail like "name", "location", "followers", etc.
-
-* Once you click another user in the UI, the detail container will show that user's detail.
+![Example](../diagram/dist/react-homework-2.gif)

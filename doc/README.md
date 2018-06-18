@@ -2,6 +2,7 @@
 
 React is an open source library for creating composable interfaces, and it is maintained by Facebook. Since its initial public release, the library has experienced a fast adoption rate and a vibrant community has sprung up around it.
 
+* [Before we start](requirements/README.md)
 * [Introduction to ES6](part1/README.md)
 
   * [var, const and let](part1/1.md)
@@ -46,6 +47,7 @@ React is an open source library for creating composable interfaces, and it is ma
   * [Homework 1](part11/homework-1.md)
   * [Homework 2](part11/homework-2.md)
   * [Homework 3](part11/homework-3.md)
+  * [Homework 4](part11/homework-4.md)
 
 * [React Router](part12/README.md)
 
