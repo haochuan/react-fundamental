@@ -3,13 +3,16 @@
 > A JavaScript library for building user interfaces
 
 * Declarative
-  React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
+
+React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
 
 * Component-Based
-  Build encapsulated components that manage their own state, then compose them to make complex UIs.
+
+Build encapsulated components that manage their own state, then compose them to make complex UIs.
 
 * Learn Once, write anywhere
-  You can easily develop new features in React without rewriting existing code. React can also render on the server using Node and power mobile apps and desktop apps.
+
+You can easily develop new features in React without rewriting existing code. React can also render on the server using Node and power mobile apps and desktop apps.
 
 ### What is React
 
