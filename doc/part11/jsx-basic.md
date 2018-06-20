@@ -95,7 +95,7 @@ Below is an example of an unclosed tag and you can not use that in JSX:
 
 ---
 
-### Different XHL Attributes Names
+### Different XML Attributes Names
 
 Since JSX is closer to JavaScript than to HTML, React DOM uses camelCase property naming convention instead of HTML attribute names.
 

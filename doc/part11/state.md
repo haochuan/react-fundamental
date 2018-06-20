@@ -11,6 +11,8 @@ Only Class Component has state, functional Component does not.
 In order to use state, we have the initialize it:
 
 ```js
+import React from 'react';
+
 class HelloWorld extends React.Component {
   // you need the construtor to init state
   constructor(props) {
@@ -41,6 +43,8 @@ class HelloWorld extends React.Component {
   }
 }
 ```
+
+We will talk about why is better to have a default state in future.
 
 ---
 
@@ -88,8 +92,6 @@ class App extends Component {
 }
 ```
 
-**NOTE: The spread operator will be used a lot with React, especially inside `setState`**
-
 ```js
 class App extends Component {
   constructor(props) {
@@ -97,7 +99,7 @@ class App extends Component {
     this.state = {one: 1, two: 2, three: 3};
   }
   changeState = () => {
-    this.setState({...this.state, one: 111});
+    this.setState({one: 111});
   };
   render() {
     return (
@@ -113,3 +115,9 @@ class App extends Component {
 ```
 
 ---
+
+### Three important principles of setting state
+
+* Do not modift state directly, use `setState()` instead. The only place you can assign value to `this.state` is in the constructor.
+* `setState()` may be asynchronous.
+* State updates are merged.

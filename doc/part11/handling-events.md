@@ -5,22 +5,6 @@ Handling events with React elements is very similar to handling events on DOM el
 * React events are named using camelCase, rather than lowercase.
 * With JSX you pass a function as the event handler, rather than a string.
 
-For example in HTML:
-
-```html
-<button onclick="alert()">
-  Alert
-</button>
-```
-
-And in React:
-
-```js
-<button onClick={alert()}>Alert</button>
-```
-
-Here is link to all avai
-
 ### onClick Event
 
 ```js
