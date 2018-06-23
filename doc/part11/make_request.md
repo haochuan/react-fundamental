@@ -64,7 +64,7 @@ axios
 axios({
   method: 'post',
   url: '/users',
-  response: {name: 'name', password: 'password'},
+  data: {name: 'name', password: 'password'},
 })
   .then(response => {
     console.log(response);
@@ -91,7 +91,7 @@ axios
 axios({
   method: 'put',
   url: '/users',
-  response: {name: 'name', password: 'password'},
+  data: {name: 'name', password: 'password'},
 })
   .then(response => {
     console.log(response);
