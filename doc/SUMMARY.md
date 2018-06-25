@@ -56,9 +56,12 @@
 * [React Router](part12/README.md)
 
   * [React Router Basic](part12/react-router-basic.md)
+  * [Navigation](part12/withRouter.md)
+  * [URL Parameters](part12/url-params.md)
   * [Nested Routing](part12/nested-routing.md)
   * [Protected Routing](part12/protected-routing.md)
   * [Homework 1](part12/homework-1.md)
+  * [Homework 2](part12/homework-2.md)
 
 * [Webpack And Babel](part13/README.md)
 

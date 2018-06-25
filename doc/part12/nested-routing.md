@@ -24,14 +24,18 @@ const Home = () => (
 );
 
 /* AnotherPage component */
-const AnotherPage = ({match}) => (
-  <div>
-    <h2>Another Page</h2>
-    <p>match.url: {match.url}</p>
-    <p>match.path: {match.path}</p>
-    <p>match.params: {JSON.stringify(match.params)}</p>
-  </div>
-);
+const AnotherPage = ({match, location}) => {
+  console.log(match);
+  console.log(location);
+  return (
+    <div>
+      <h2>Another Page</h2>
+      <p>match.url: {match.url}</p>
+      <p>match.path: {match.path}</p>
+      <p>match.params: {JSON.stringify(match.params)}</p>
+    </div>
+  );
+};
 
 /* App component */
 class App extends Component {

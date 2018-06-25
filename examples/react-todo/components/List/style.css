@@ -1,0 +1,16 @@
+.List {
+  padding: 0px;
+  margin: 20px 0px;
+}
+.List-item {
+  padding: 10px;
+  font-size: 20px;
+  height: 30px;
+  list-style: none;
+  border: 1px solid #e0e0e0;
+}
+
+.List-item:hover {
+  cursor: pointer;
+  box-shadow: 3px 8px #e8e8e8;
+}
