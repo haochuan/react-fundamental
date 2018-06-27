@@ -15,6 +15,12 @@ If the router’s path and the location are successfully matched, an object is c
 * match.isExact. A boolean that returns true if the match was exact (without any trailing characters).
 * match.params. An object containing key/value pairs from the URL parsed by the Path-to-RegExp package.
 
+### location
+
+Locations represent where the app is now, where you want it to go, or even where it was. It is also a place for you to get query parameters from URL.
+
+* location.search
+
 ```js
 /* Home component */
 const Home = () => (

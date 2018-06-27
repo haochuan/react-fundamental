@@ -63,6 +63,7 @@ React is an open source library for creating composable interfaces, and it is ma
   * [Protected Routing](part12/protected-routing.md)
   * [Homework 1](part12/homework-1.md)
   * [Homework 2](part12/homework-2.md)
+  * [Homework 3](part12/homework-3.md)
 
 * [Webpack And Babel](part13/README.md)
 
