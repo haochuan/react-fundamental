@@ -26,10 +26,6 @@ In most programming languages (including ECMAScript 2015+, which is one of the m
 
 Without the module loaders and bundlers, you could always combine your files manually or load your HTML with countless `<script>` tags.
 
-```html
-
-```
-
 ---
 
 ### Setup Webpack

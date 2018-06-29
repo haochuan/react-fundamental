@@ -52,7 +52,7 @@ const config = {
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
-      filename: './index.html',
+      filename: path.join(__dirname, 'dist', 'index.html'),
     }),
   ],
 };
