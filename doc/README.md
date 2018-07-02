@@ -97,3 +97,8 @@ React is an open source library for creating composable interfaces, and it is ma
   * [Redux Dev Tool](part14/redux-dev-tool.md)
   * [Redux Middleware](part14/redux-middleware.md)
   * [Async Action](part14/async-action.md)
+
+* [Bonus Topics](bonus/README.md)
+
+  * [How JS was designed](bonus/js-work.md)
+  * [Server Side Rendering](bonus/ssr.md)

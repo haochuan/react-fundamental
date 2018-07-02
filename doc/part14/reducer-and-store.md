@@ -26,7 +26,6 @@ const increaseAction = {type: 'INCREMENT'};
 const decreaseAction = {type: 'DECREMENT'};
 const otherAction = {type: 'OTHER'};
 
-console.log(counter());
 console.log(counter(0, increaseAction));
 console.log(counter(1, decreaseAction));
 console.log(counter(0, otherAction));
