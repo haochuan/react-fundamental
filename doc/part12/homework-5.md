@@ -2,6 +2,8 @@
 
 This is a follow up for homework four.
 
+* **NOTE** For all apis we have, if you add a query parameter `noError=1` in the URL, you will never get server error again :).
+
 * In `/:problemId` where you will show problem detail on the page, create a input box to let the user type the answer, and also a button for the user to submit the answer, like:
 
 ![Example](../diagram/dist/12-hw5-1.png)
