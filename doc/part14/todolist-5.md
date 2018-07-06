@@ -85,3 +85,11 @@ export default connect(mapStateToProps)(App);
 * With the function `mapStateToProps`, you can map the global state from Redux store to props of your React Components. The `mapStateToProps` function will take one parameter, which is the global state in Redux store, and return an Object which describe the mapping. If you don't need any mapping, just use `connect()(App)`.
 
 * After the `connect` function, the React component will get store's `dispatch` function in `props.dispatch`. That's how you can dispatch action inside the Component.
+
+---
+
+### More about `connect`
+
+* `connect` will take one parameter first, which is the `mapStateToProps` function where you define how to transform the current Redux store state into the props of the component. After this, the whole thing will return a function for future use.
+* If you don't need any store state to props mapping, you can just do `connect()(App)`. You can still get the access to `dispatch` via `props.dispatch`.
+* Then you pass the React component to what we got from `connect`.
