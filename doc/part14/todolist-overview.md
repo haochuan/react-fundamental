@@ -48,3 +48,8 @@ describe('test for multiply function', () => {
   });
 });
 ```
+
+* A test suite is a block of unit tests that are all closely related; they test the same function or similar parts of our code base.
+* We introduce a test suite in Jest using `describe()`
+* Each individual unit test is called a “spec”.
+* Jest makes it natural to write specs by containing them in a function called `it()`
