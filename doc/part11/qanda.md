@@ -59,3 +59,29 @@ class B extends Component {
 * Based on those points, you are not required to use a specific one. But personally I recommand the second one.
 
 ---
+
+### What will trigger re-rendering for React Component?
+
+Only state change will trigger componnet re-rendering. Pure props changes cannot trigger re-rendering.
+
+```js
+import React, {Component} from 'react';
+import {render} from 'react-dom';
+
+class App extends Component {
+  number = 1;
+  componentDidMount() {
+    setInterval(() => {
+      console.log(this.number);
+      this.number++;
+    }, 1000);
+  }
+  render() {
+    return <Number number={number} />;
+  }
+}
+
+const Number = ({number}) => <div>{number}</div>;
+
+render(<App />, document.getElementById('root'));
+```
