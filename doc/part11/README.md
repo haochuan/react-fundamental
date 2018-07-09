@@ -12,6 +12,7 @@
 * [List and Keys](list-and-keys.md)
 * [Handling Form](handling-form.md)
 * [Make HTTP Request](make_request.md)
+* [Refs](refs.md)
 * [Pure Component](pure-component.md)
 * [High Order Component](hoc.md)
 * [Homework 1](homework-1.md)
