@@ -104,3 +104,5 @@
 
   * [How JS was designed](bonus/js-work.md)
   * [Server Side Rendering](bonus/ssr.md)
+  * [Context API with HOC](bonus/context-with-hoc.md)
+  * [Error Boundary](bonus/error-boundary.md)
