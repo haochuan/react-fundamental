@@ -33,6 +33,46 @@ You don't need to that for most of the cases, unless there is a specific reason.
 
 ---
 
+### How to update immutable state
+
+Suppose we are building a todo app. We have an array `todos` to store all the todo list, and we have a function `addTodo` to add a new todo:
+
+```js
+import React, {Component, PureComponent} from 'react';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {todos: []};
+  }
+
+  addTodo = () => {
+    this.setState({todos: this.state.todos.push('hello')});
+  };
+  render() {
+    return (
+      <div>
+        <button onClick={this.addTodo}>Add New</button>
+        <ul>
+          {this.state.todos.map((item, index) => {
+            return <li>{item}</li>;
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+Why it's not working?
+
+* You can not modify state directly. In the other word, you have to assign `todos` to a new array instead of modifying the old `todos` itself.
+* `Array.push()` will return the length of the new array
+
+---
+
 ### Best way to initialize state in React component
 
 ```js
