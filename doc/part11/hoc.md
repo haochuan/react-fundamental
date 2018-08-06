@@ -1,5 +1,7 @@
 # High Order Component
 
+A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React’s compositional nature.
+1
 A higher-order component is a function that takes a component and returns a new component, for the concept of resuable component.
 
 ### High Order Component Pattern
@@ -31,9 +33,9 @@ import React, {Component} from 'react';
 const A = props => {
   return (
     <div>
-      <A1 number={props.number} foo={this.foo} bar={this.bar} />
-      <A2 number={props.number} foo={this.foo} bar={this.bar} />
-      <A3 number={props.number} foo={this.foo} bar={this.bar} />
+      <A1 number={props.number} />
+      <A2 number={props.number} />
+      <A3 number={props.number} />
     </div>
   );
 };
@@ -60,19 +62,13 @@ const A3 = props => {
 
 class App extends Component {
   state = {number: 10};
-  foo = () => {
-    console.log('foo');
-  };
-  bar = () => {
-    console.log('foo');
-  };
   render() {
     const {number} = this.state;
     return (
       <div>
-        <A number={number} foo={this.foo} bar={this.bar} />
-        <B number={number} foo={this.foo} bar={this.bar} />
-        <C number={number} foo={this.foo} bar={this.bar} />
+        <A number={number} />
+        <B number={number} />
+        <C number={number} />
       </div>
     );
   }
@@ -84,15 +80,9 @@ Use HOC:
 ```js
 const withNumberAndFunctions = OldComponent => {
   class NewComponent extends Component {
-    foo = () => {
-      console.log('foo');
-    };
-    bar = () => {
-      console.log('foo');
-    };
     render() {
       const number = 10;
-      return <OldComponent foo={this.foo} bar={this.bar} number={number} />;
+      return <OldComponent number={number} />;
     }
   }
   return NewComponent;
