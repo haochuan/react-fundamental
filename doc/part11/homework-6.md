@@ -1,4 +1,4 @@
-# Homework Six
+# Homework 6
 
 In this homework we are going to build a Todo List Application using React.
 

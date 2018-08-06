@@ -1,4 +1,4 @@
-# Homework Three
+# Homework 3
 
 Build simple timer web application using React:
 

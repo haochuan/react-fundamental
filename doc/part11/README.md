@@ -21,4 +21,8 @@
 * [Homework 4](homework-4.md)
 * [Homework 5](homework-5.md)
 * [Homework 6](homework-6.md)
+* [Homework 7](homework-7.md)
+* [Homework 8](homework-8.md)
+* [Homework 9](homework-9.md)
+* [Homework 10](homework-10.md)
 * [Q & A](qanda.md)

@@ -1,4 +1,4 @@
-# Homework Four
+# Homework 4
 
 In this homework, we are going to practice sending HTTP request in React and build a web application to view github users. First of all we will send a GET HTTP request to get 100 users from github, and render those data in the UI. Then every time when we click one of the user in the list, we will show the detail user information in the UI.
 

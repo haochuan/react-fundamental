@@ -1,4 +1,4 @@
-# Homework Two
+# Homework 2
 
 Build simple counter web application using React:
 
@@ -8,7 +8,7 @@ Build simple counter web application using React:
 
 The basic page should be like this:
 
-![Example](../diagram/dist/react-counter.png)
+![Example](../diagram/dist/react-counter.png
 
 If you want to spend more time on styling and css, you can also make something like this:
 

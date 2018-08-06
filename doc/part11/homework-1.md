@@ -1,4 +1,4 @@
-# Homework One
+# Homework 1
 
 Reading Material: https://css-tricks.com/snippets/css/a-guide-to-flexbox
 
