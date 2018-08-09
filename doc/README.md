@@ -47,6 +47,7 @@ React is an open source library for creating composable interfaces, and it is ma
   * [Refs](part11/refs.md)
   * [Pure Component](part11/pure-component.md)
   * [High Order Component](part11/hoc.md)
+  * [Todo List Example](part11/todoExample.md)
   * [Homework 1](part11/homework-1.md)
   * [Homework 2](part11/homework-2.md)
   * [Homework 3](part11/homework-3.md)

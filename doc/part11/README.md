@@ -15,6 +15,7 @@
 * [Refs](refs.md)
 * [Pure Component](pure-component.md)
 * [High Order Component](hoc.md)
+* [Todo List Example](todoExample.md)
 * [Homework 1](homework-1.md)
 * [Homework 2](homework-2.md)
 * [Homework 3](homework-3.md)
