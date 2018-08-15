@@ -77,19 +77,12 @@ import TodoList from '../../components/TodoList';
 import * as actions from '../../actions';
 
 class App extends Component {
-  addTodo = text => {
-    this.props.dispatch(actions.addTodo(text));
-  };
-  onTodoClick = id => {
-    this.props.dispatch(actions.toggleTodo(id));
-  };
-
   render() {
     console.log(this.props.todos);
     return (
       <div>
-        <AddTodo addTodo={this.addTodo} />
-        <TodoList list={this.props.todos} onTodoClick={this.onTodoClick} />
+        <AddTodo addTodo={this.props.addTodo} />
+        <TodoList list={this.props.todos} onTodoClick={this.props.toggleTodo} />
       </div>
     );
   }
@@ -102,5 +95,16 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    addTodo: text => {
+      dispatch(actions.addTodo(text));
+    },
+    toggleTodo: id => {
+      dispatch(actions.toggleTodo(id));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 ```

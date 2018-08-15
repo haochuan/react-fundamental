@@ -56,16 +56,11 @@ import AddTodo from '../../components/AddTodo';
 import * as actions from '../../actions';
 
 class App extends Component {
-  addTodo = text => {
-    console.log(text);
-    this.props.dispatch(actions.addTodo(text));
-  };
-
   render() {
     console.log(this.props.todos);
     return (
       <div>
-        <AddTodo addTodo={this.addTodo} />
+        <AddTodo addTodo={this.props.addTodo} />
       </div>
     );
   }
@@ -78,5 +73,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    addTodo: text => {
+      dispatch(actions.addTodo(text));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 ```

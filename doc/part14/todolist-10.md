@@ -56,25 +56,13 @@ import Filter from '../../components/Filter';
 import * as actions from '../../actions';
 
 class App extends Component {
-  addTodo = text => {
-    this.props.dispatch(actions.addTodo(text));
-  };
-  onTodoClick = id => {
-    this.props.dispatch(actions.toggleTodo(id));
-  };
-
-  setFilter = filter => {
-    this.props.dispatch(actions.setFilter(filter));
-  };
-
   render() {
     console.log(this.props.todos);
-    console.log(this.props.filter);
     return (
       <div>
-        <AddTodo addTodo={this.addTodo} />
-        <TodoList list={this.props.todos} onTodoClick={this.onTodoClick} />
-        <Filter filter={this.props.filter} setFilter={this.setFilter} />
+        <AddTodo addTodo={this.props.addTodo} />
+        <TodoList list={this.props.todos} onTodoClick={this.props.toggleTodo} />
+        <Filter filter={this.props.filter} setFilter={this.props.setFilter} />
       </div>
     );
   }
@@ -87,7 +75,21 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    addTodo: text => {
+      dispatch(actions.addTodo(text));
+    },
+    toggleTodo: id => {
+      dispatch(actions.toggleTodo(id));
+    },
+    setFilter: filter => {
+      dispatch(actions.setFilter(filter));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 ```
 
 Why this is not working still?
@@ -132,29 +134,18 @@ import Filter from '../../components/Filter';
 import * as actions from '../../actions';
 
 class App extends Component {
-  addTodo = text => {
-    this.props.dispatch(actions.addTodo(text));
-  };
-  onTodoClick = id => {
-    this.props.dispatch(actions.toggleTodo(id));
-  };
-
-  setFilter = filter => {
-    this.props.dispatch(actions.setFilter(filter));
-  };
-
   render() {
     console.log(this.props.todos);
     console.log(this.props.filter);
     return (
       <div>
-        <AddTodo addTodo={this.addTodo} />
+        <AddTodo addTodo={this.props.addTodo} />
         <TodoList
           list={this.props.todos}
-          onTodoClick={this.onTodoClick}
+          onTodoClick={this.props.toggleTodo}
           filter={this.props.filter}
         />
-        <Filter filter={this.props.filter} setFilter={this.setFilter} />
+        <Filter filter={this.props.filter} setFilter={this.props.setFilter} />
       </div>
     );
   }
@@ -167,5 +158,19 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    addTodo: text => {
+      dispatch(actions.addTodo(text));
+    },
+    toggleTodo: id => {
+      dispatch(actions.toggleTodo(id));
+    },
+    setFilter: filter => {
+      dispatch(actions.setFilter(filter));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 ```

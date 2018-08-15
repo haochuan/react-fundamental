@@ -53,6 +53,10 @@ class App extends Component {
 
 Now we just need one more step to connect our `App` Component with Redux using `connect()` function from `react-redux`:
 
+To use `connect()`, you need to define a special function called `mapStateToProps` that tells how to transform the current Redux store state into the props you want to pass to a presentational component you are wrapping.
+
+In addition to reading the state, components can dispatch actions. In a similar fashion, you can define a function called `mapDispatchToProps()` that receives the `dispatch()` method and returns callback props that you want to inject into the presentational component.
+
 In `App` Component:
 
 ```js
@@ -62,7 +66,7 @@ import {connect} from 'react-redux';
 class App extends Component {
   componentDidMount() {
     setTimeout(() => {
-      this.props.dispatch({type: 'SET_FILTER', filter: 'active'});
+      this.props.setFilter('active');
     }, 5000);
   }
   render() {
@@ -79,17 +83,19 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    setFilter: filter => {
+      dispatch({type: 'SET_FILTER', filter: filter});
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 ```
 
-* With the function `mapStateToProps`, you can map the global state from Redux store to props of your React Components. The `mapStateToProps` function will take one parameter, which is the global state in Redux store, and return an Object which describe the mapping. If you don't need any mapping, just use `connect()(App)`.
+* With the function `mapStateToProps`, we are mapping `state.todos` as `props.todos` and `state.filter` as `props.filter` in `App` componnet.
 
-* After the `connect` function, the React component will get store's `dispatch` function in `props.dispatch`. That's how you can dispatch action inside the Component.
+* With the function `mapDispatchToProps`, we are mapping the function `setFilter` as `props.setFilter` in `App` componnet.
 
----
-
-### More about `connect`
-
-* `connect` will take one parameter first, which is the `mapStateToProps` function where you define how to transform the current Redux store state into the props of the component. After this, the whole thing will return a function for future use.
-* If you don't need any store state to props mapping, you can just do `connect()(App)`. You can still get the access to `dispatch` via `props.dispatch`.
-* Then you pass the React component to what we got from `connect`.
+* `mapStateToProps` and `mapDispatchToProps` are both optional parameters for the `connect`function. If you passing nothing, nothing will be mapped.

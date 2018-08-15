@@ -112,3 +112,5 @@ React is an open source library for creating composable interfaces, and it is ma
   * [Server Side Rendering](bonus/ssr.md)
   * [Context API with HOC](bonus/context-with-hoc.md)
   * [Error Boundary](bonus/error-boundary.md)
+  * [Test Componnet With Enzyme](bonus/test-with-enzyme.md)
+  * [Future Study List](bonus/future-study.md)

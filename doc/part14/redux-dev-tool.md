@@ -31,7 +31,7 @@ For a basic [Redux store](http://redux.js.org/docs/api/createStore.html) simply 
 
 ```diff
  const store = createStore(
-   reducer, /* preloadedState, */
+   reducer,
 +  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
  );
 ```
@@ -46,8 +46,8 @@ If you setup your store with [middleware and enhancers](http://redux.js.org/docs
   import { createStore, applyMiddleware, compose } from 'redux';
 
 + const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-+ const store = createStore(reducer, /* preloadedState, */ composeEnhancers(
-- const store = createStore(reducer, /* preloadedState, */ compose(
++ const store = createStore(reducer, composeEnhancers(
+- const store = createStore(reducer, compose(
     applyMiddleware(...middleware)
   ));
 ```
