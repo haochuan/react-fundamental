@@ -10,6 +10,31 @@ npm install --save enzyme enzyme-adapter-react-16
 
 ---
 
+### Using Jest + Enzyme with create-react-app
+
+when we’re working with an application created by create-react-app, all we have to do is create the file src/setupTests.js. create-react-app is automatically configured to run this file before any of our tests.
+
+```js
+import {configure} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({adapter: new Adapter()});
+```
+
+---
+
+### Using Jest + Enzyme with custom dev enviroment
+
+To run the setup file to configure Enzyme and the Adapter with Jest, you need to add this configuration in your `package.json`:
+
+```js
+"jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.js"
+  }
+```
+
+---
+
 ### Three ways of testing componnet
 
 1. [Shallow Rendering](http://airbnb.io/enzyme/docs/api/shallow.html)
@@ -46,7 +71,7 @@ More info about different render methods: https://gist.github.com/fokusferit/e45
 #### Component
 
 ```js
-import React, {Componet} from 'react';
+import React, {Component} from 'react';
 
 class Foo extends Component {
   constructor(props) {
@@ -66,7 +91,7 @@ export default Foo;
 import React from 'react';
 import {shallow, mount, render} from 'enzyme';
 
-import Foo from '../Foo';
+import Foo from './Foo';
 
 describe('A suite', function() {
   it('should render without throwing an error', function() {
