@@ -11,9 +11,9 @@ Usually, for any API request you'll want to dispatch at least three different ki
 * An action informing the reducers that the request failed.
 
 ```js
-{ type: 'FETCH_DATA_REQUEST' }
-{ type: 'FETCH_DATA_FAILURE', error: 'Something Wrong' }
-{ type: 'FETCH_DATA_SUCCESS', response: { ... } }
+{ type: 'USER_FETCH_START' }
+{ type: 'USER_FETCH_FAIL', error: 'Something Wrong' }
+{ type: 'USER_FETCH_SUCCESS', response: { ... } }
 ```
 
 Let's go through an example of writing the actions and the reducer for getting HTTP request.
@@ -21,29 +21,34 @@ Let's go through an example of writing the actions and the reducer for getting H
 ##### Reducer
 
 ```js
-const initState = {isFetching: false, users: [], err: ''};
+const initState = {isFetching: false, data: [], err: null};
+
 const reducer = (state = initState, action) => {
   switch (action.type) {
-    case 'FETCH_DATA_REQUEST':
+    case 'USER_FETCH_START':
       return {
         ...state,
         isFetching: true,
       };
-    case 'FETCH_DATA_FAILURE':
+    case 'USER_FETCH_FAIL':
       return {
         ...state,
         error: action.error,
         isFetching: false,
       };
-    case 'FETCH_DATA_SUCCESS':
+    case 'USER_FETCH_SUCCESS':
       return {
         ...state,
         isFetching: false,
-        err: '',
-        users: action.response.data,
+        err: null,
+        data: action.data,
       };
+    default:
+      return state;
   }
 };
+
+export default reducer;
 ```
 
 ##### Action Creators
@@ -51,30 +56,30 @@ const reducer = (state = initState, action) => {
 ```js
 function requestStart() {
   return {
-    type: 'FETCH_DATA_REQUEST',
+    type: 'USER_FETCH_START',
   };
 }
 function requestSuccess(response) {
   return {
-    type: 'FETCH_DATA_SUCCESS',
-    response,
+    type: 'USER_FETCH_SUCCESS',
+    data: response.data,
   };
 }
 function requestFail(error) {
   return {
-    type: 'FETCH_DATA_FAILURE',
+    type: 'USER_FETCH_FAIL',
     error,
   };
 }
-export function getData() {
-  store.dispatch(requestStart());
+function getData() {
+  dispatch(requestStart());
   axios
-    .get('xxx')
+    .get('/api/users')
     .then(response => {
-      store.dispatch(requestSuccess(response));
+      dispatch(requestSuccess(response));
     })
     .catch(err => {
-      store.dispatch(requestFail(err));
+      dispatch(requestFail(err));
     });
 }
 ```
@@ -104,26 +109,26 @@ Let's take a look at how we use the middleware:
 ```js
 function requestStart() {
   return {
-    type: 'FETCH_DATA_REQUEST',
+    type: 'USER_FETCH_START',
   };
 }
 function requestSuccess(response) {
   return {
-    type: 'FETCH_DATA_SUCCESS',
-    response,
+    type: 'USER_FETCH_SUCCESS',
+    data: response.data,
   };
 }
 function requestFail(error) {
   return {
-    type: 'FETCH_DATA_FAILURE',
+    type: 'USER_FETCH_FAIL',
     error,
   };
 }
-export function getData() {
-  return (dispatch, getState) => {
+function getData() {
+  return (dispatch, store) => {
     dispatch(requestStart());
     axios
-      .get('xxx')
+      .get('/api/users')
       .then(response => {
         dispatch(requestSuccess(response));
       })

@@ -107,9 +107,10 @@
 
 * [Bonus Topics](bonus/README.md)
 
-  * [How JS was designed](bonus/js-work.md)
+  * [Connect create-react-app with Express](bonus/connect-react-with-express.md)
+  * [Test Componnet With Enzyme](bonus/test-with-enzyme.md)
   * [Server Side Rendering](bonus/ssr.md)
   * [Context API with HOC](bonus/context-with-hoc.md)
   * [Error Boundary](bonus/error-boundary.md)
-  * [Test Componnet With Enzyme](bonus/test-with-enzyme.md)
+  * [How JS was designed](bonus/js-work.md)
   * [Future Study List](bonus/future-study.md)
