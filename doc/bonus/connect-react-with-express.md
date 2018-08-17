@@ -215,3 +215,7 @@ app.listen(PORT, () => {
   "proxy": "http://localhost:4000/"
 }
 ```
+
+---
+
+For full source code please see: https://github.com/haochuan/react-fundamental/tree/master/examples/connect-with-express
