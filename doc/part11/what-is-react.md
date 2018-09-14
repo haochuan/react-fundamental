@@ -2,15 +2,15 @@
 
 > A JavaScript library for building user interfaces
 
-* Declarative
+- Declarative
 
 React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
 
-* Component-Based
+- Component-Based
 
 Build encapsulated components that manage their own state, then compose them to make complex UIs.
 
-* Learn Once, write anywhere
+- Learn Once, write anywhere
 
 You can easily develop new features in React without rewriting existing code. React can also render on the server using Node and power mobile apps and desktop apps.
 
@@ -28,15 +28,26 @@ Although React is a relative new library in the front end world, it has been pro
 
 Thousands of companies worldwide are using React, including big names such as Netflix and AirBnB. React has become extremely popular, such that a number of apps have been ported to React — including WhatsApp, Instagram and Dropbox.
 
-* Working with the DOM API is hard. React basically gives developers the ability to work with a virtual browser that is more friendly than the real browser. React’s virtual browser acts like an agent between the developer and the real browser.
+- Working with the DOM API is hard. React basically gives developers the ability to work with a virtual browser that is more friendly than the real browser. React’s virtual browser acts like an agent between the developer and the real browser.
 
-* React enables developers to declaratively describe their User Interfaces and model the state of those interfaces. This means instead of coming up with steps to describe transactions on interfaces, developers just describe the interfaces in terms of a final state (like a function). When transactions happen to that state, React takes care of updating the User Interfaces based on that.
+- React enables developers to declaratively describe their User Interfaces and model the state of those interfaces. This means instead of coming up with steps to describe transactions on interfaces, developers just describe the interfaces in terms of a final state (like a function). When transactions happen to that state, React takes care of updating the User Interfaces based on that.
 
-* React is just JavaScript, there is a very small API to learn, just a few functions and how to use them. After that, your JavaScript skills are what make you a better React developer. There are no barriers to entry. A JavaScript developer can become a productive React developer in a few hours.
+- React is just JavaScript, there is a very small API to learn, just a few functions and how to use them. After that, your JavaScript skills are what make you a better React developer. There are no barriers to entry. A JavaScript developer can become a productive React developer in a few hours.
 
 Since Web browsers understand JavaScript, we can use React to describe Web User Interfaces. I like to use the word describe here because that’s what we basically do with React, we just tell it what we want and React will build the actual User Interfaces, on our behalf, in the Web browser. Without React or similar libraries, we would need to manually build User Interfaces with native Web APIs and JavaScript.
 
 When you hear the statement that “React is declarative,” this is exactly what it means, we describe User Interfaces with React and tell it what we want (not how to do it). React will take care of the “how” and translate our declarative descriptions (which we write in the React language) to actual User Interfaces in the browser. React shares this simple declarative power with HTML itself, but with React, we get to be declarative for HTML interfaces that represent dynamic data, not just static data.
+
+---
+
+### Explain React in human words
+
+- React is a JavaScript library for building user interfaces
+- React is designed around the concept of reusable components. You define small components and you put them together to form bigger components.
+- In React, we describe User Interfaces using components. We use the components with some input data and they give generate the HTML output.
+- React's name is the simple explanation of how Reacdt works. When the input of a component changes, the user interface it represents (the output) changes automatically. You never need to worry about how to reflect these changes.
+- With React, we write HTML using JavaScript. We rely on the power of JavaScript to generate HTML that depends on some data, rather than using HTML to make it work with that data.
+- React is fast, and it makes sense to developers. That's why people use and love it.
 
 ---
 
