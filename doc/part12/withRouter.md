@@ -46,9 +46,9 @@ The [`history`](https://github.com/ReactTraining/history) package is one the onl
 
 With `history`, you can navigate across your browser history stack easily:
 
-* history.push(path, [state]) - (function) Pushes a new entry onto the history stack
-* history.goBack() - (function) go back one page
-* history.goForward() - (function) go forward one page
+- history.push(path, [state]) - (function) Pushes a new entry onto the history stack
+- history.goBack() - (function) go back one page
+- history.goForward() - (function) go forward one page
 
 ---
 
@@ -161,15 +161,13 @@ const Login = props => {
   );
 };
 
-const WithRouterLogin = withRouter(Login);
-
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div>
           <Route exact={true} path="/" component={Home} />
-          <Route path="/login" component={WithRouterLogin} />
+          <Route path="/login" component={Login} />
         </div>
       </BrowserRouter>
     );
