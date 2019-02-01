@@ -57,7 +57,6 @@
   - [Homework 9](part11/homework-9.md)
   - [Homework 10](part11/homework-10.md)
   - [Q & A](part11/qanda.md)
-  - [Todo List Example](part11/todoExample.md)
 
 - [React Router](part12/README.md)
 
