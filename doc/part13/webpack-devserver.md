@@ -23,7 +23,7 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'my-first-webpack.bundle.js',
+    filename: 'my-first-webpack.bundle.js'
   },
   module: {
     rules: [
@@ -31,21 +31,21 @@ const config = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-        },
-      },
-    ],
+          loader: 'babel-loader'
+        }
+      }
+    ]
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: path.join(__dirname, 'dist', 'index.html'),
-    }),
+      template: './public/index.html',
+      filename: path.join(__dirname, 'dist', 'index.html')
+    })
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
-    port: 3000,
-  },
+    port: 3000
+  }
 };
 module.exports = config;
 ```

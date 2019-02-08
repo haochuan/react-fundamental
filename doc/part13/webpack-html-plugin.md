@@ -10,14 +10,14 @@ Install the plugin first:
 npm install html-webpack-plugin --save-dev
 ```
 
-Next we need to create a HTML template `index.html` in `./src` for `html-webpack-plugin` to use:
+Next we need to create a HTML template `index.html` in `./public` for `html-webpack-plugin` to use:
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>React</title>
 </head>
 <body>
   <div id="root"></div>
@@ -51,7 +51,7 @@ const config = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: './src/index.html',
+      template: './public/index.html',
       filename: path.join(__dirname, 'dist', 'index.html'),
     }),
   ],

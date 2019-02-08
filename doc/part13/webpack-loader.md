@@ -10,7 +10,7 @@
 Install dependencies:
 
 ```
-npm install babel-loader@7 babel-core babel-preset-env babel-preset-react --save-dev
+npm install babel-loader @babel/core @babel/preset-env @babel/preset-react --save-dev
 ```
 
 Add `babel-loader` in webpack config file.
@@ -27,7 +27,7 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'my-first-webpack.bundle.js',
+    filename: 'my-first-webpack.bundle.js'
   },
   module: {
     rules: [
@@ -35,11 +35,11 @@ const config = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-        },
-      },
-    ],
-  },
+          loader: 'babel-loader'
+        }
+      }
+    ]
+  }
 };
 module.exports = config;
 ```
@@ -48,7 +48,7 @@ At last, we need to create a new file named `./babelrc` inside the project to te
 
 ```js
 {
-  "presets": ["env", "react"]
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
 ```
 
