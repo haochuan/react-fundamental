@@ -58,7 +58,6 @@ React is an open source library for creating composable interfaces, and it is ma
   - [Homework 9](part11/homework-9.md)
   - [Homework 10](part11/homework-10.md)
   - [Q & A](part11/qanda.md)
-  - [Todo List Sample](part11/todoExample.md)
 
 - [React Router](part12/README.md)
 
