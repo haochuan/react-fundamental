@@ -7,7 +7,7 @@ A higher-order component is a function that takes a component and returns a new 
 ### High Order Component Pattern
 
 ```js
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 const higherOrderComponent = OldComponnet => {
   class NewComponent extends Component {
@@ -26,8 +26,6 @@ const higherOrderComponent = OldComponnet => {
 In order to implement the localization in the application, we need to share some common data across all componnets.
 
 ```js
-import React, {Component} from 'react';
-
 // hoc for localization strings
 const withLocalization = OldComponent => {
   class NewComponent extends Component {
@@ -35,12 +33,12 @@ const withLocalization = OldComponent => {
       const template = {
         en: {
           hello: 'hello',
-          bye: 'bye',
+          bye: 'bye'
         },
         cn: {
           hello: '你好',
-          bye: '再见',
-        },
+          bye: '再见'
+        }
       };
       // get the language from this.props
       // use en by default
@@ -62,42 +60,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <Content />
-        <Footer />
+        <WithLocalizationButton />
+        <WithLocalizationText />
       </div>
     );
   }
-}
-
-// header component
-
-function Header(props) {
-  return (
-    <div>
-      <p>Header</p>
-      <WithLocalizationButton />
-    </div>
-  );
-}
-
-// content component
-function Content(props) {
-  return (
-    <div>
-      <p>Content</p>
-      <WithLocalizationText />
-    </div>
-  );
-}
-
-// footer component
-function Footer(props) {
-  return (
-    <div>
-      <p>Footer</p>
-    </div>
-  );
 }
 
 // Text component
@@ -114,6 +81,4 @@ function Button(props) {
     </button>
   );
 }
-
-export default App;
 ```

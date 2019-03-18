@@ -35,10 +35,10 @@ axios(options)
 
 ### Examples
 
-* Send a GET request
+- Send a GET request
 
 ```js
-axios({method: 'get', url: '/users'})
+axios({ method: 'get', url: '/users' })
   .then(response => {
     console.log(response);
   })
@@ -58,13 +58,13 @@ axios
   });
 ```
 
-* Send a POST request
+- Send a POST request
 
 ```js
 axios({
   method: 'post',
   url: '/users',
-  data: {name: 'name', password: 'password'},
+  data: { name: 'name', password: 'password' }
 })
   .then(response => {
     console.log(response);
@@ -76,7 +76,7 @@ axios({
 // or
 
 axios
-  .post('/users', {name: 'name', password: 'password'})
+  .post('/users', { name: 'name', password: 'password' })
   .then(response => {
     console.log(response);
   })
@@ -85,13 +85,13 @@ axios
   });
 ```
 
-* Send a PUT request
+- Send a PUT request
 
 ```js
 axios({
   method: 'put',
   url: '/users',
-  data: {name: 'name', password: 'password'},
+  data: { name: 'name', password: 'password' }
 })
   .then(response => {
     console.log(response);
@@ -103,7 +103,7 @@ axios({
 // or
 
 axios
-  .put('/users', {name: 'name', password: 'password'})
+  .put('/users', { name: 'name', password: 'password' })
   .then(response => {
     console.log(response);
   })
@@ -112,10 +112,10 @@ axios
   });
 ```
 
-* Send a DELETE request
+- Send a DELETE request
 
 ```js
-axios({method: 'delete', url: '/users'})
+axios({ method: 'delete', url: '/users' })
   .then(response => {
     console.log(response);
   })
@@ -126,7 +126,7 @@ axios({method: 'delete', url: '/users'})
 // or
 
 axios
-  .delete('/users', {name: 'name', password: 'password'})
+  .delete('/users', { name: 'name', password: 'password' })
   .then(response => {
     console.log(response);
   })
@@ -143,7 +143,7 @@ In this example, we are going to get some user data from github and render the d
 
 ```js
 function List(props) {
-  const imageStyle = {width: 100, height: 100};
+  const imageStyle = { width: 100, height: 100 };
   return (
     <tr>
       <td>{props.id}</td>
@@ -160,14 +160,14 @@ class App extends Component {
     super(props);
     // remember that you have to initialize
     // the same data type for the result you want to get in state
-    this.state = {data: []};
+    this.state = { data: [] };
   }
   componentDidMount() {
     // componentDidMount is the right place to get some data to render the page
-    axios({method: 'get', url: 'https://api.github.com/users'})
+    axios({ method: 'get', url: 'https://api.github.com/users' })
       .then(response => {
         console.log(response);
-        this.setState({data: response.data});
+        this.setState({ data: response.data });
       })
       .catch(err => {
         console.log(err);
@@ -191,6 +191,66 @@ class App extends Component {
         </tbody>
       </table>
     );
+  }
+}
+```
+
+### Common pattern to handle data fetching in React
+
+```js
+function List(props) {
+  const imageStyle = { width: 100, height: 100 };
+  return (
+    <tr>
+      <td>{props.id}</td>
+      <td>{props.login}</td>
+      <td>
+        <img style={imageStyle} src={props.avatar_url} alt={props.avatar_url} />
+      </td>
+    </tr>
+  );
+}
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    // remember that you have to initialize
+    // the same data type for the result you want to get in state
+    this.state = { data: [], isLoading: false };
+  }
+  componentDidMount() {
+    // componentDidMount is the right place to get some data to render the page
+    this.setState({ isLoading: true });
+    axios({ method: 'get', url: 'https://api.github.com/users' })
+      .then(response => {
+        setTimeout(() => {
+          this.setState({ data: response.data, isLoading: false });
+        }, 3000);
+      })
+      .catch(err => {
+        alert(err);
+      });
+  }
+  render() {
+    const userTable = (
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>username</th>
+            <th>image</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.state.data.map((item, index) => {
+            return <List key={item.id} {...item} />;
+          })}
+        </tbody>
+      </table>
+    );
+
+    const loadingUI = <div>Loading...</div>;
+    return <div>{!this.state.isLoading ? userTable : loadingUI}</div>;
   }
 }
 ```
