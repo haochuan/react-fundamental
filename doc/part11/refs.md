@@ -90,7 +90,7 @@ class App extends Component {
                 text:
                   this.state.text.slice(0, selectionStart) +
                   'Hello World' +
-                  this.state.text.slice(selectionEnd + 1)
+                  this.state.text.slice(selectionEnd)
               });
             }
             textareaElem.focus();

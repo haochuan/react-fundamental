@@ -7,7 +7,7 @@ Next we are going to talk about protected routes. If someone tries to access /ad
 `<Redirect>` will replace the current location in the history stack with a new location. The new location is specified by the `to` prop. Here’s how we’ll be using `<Redirect>.`
 
 ```js
-<Redirect to={{pathname: '/login', state: {from: props.location}}} />
+<Redirect to={{ pathname: '/login', state: { from: props.location } }} />
 ```
 
 So, if someone tries to access the /admin while logged out, they’ll be redirected to the /login route. The information about the current location is passed via state, so that if the authentication is successful, the user can be redirected back to the original location. Inside the child component, you can access this information at this.props.location.state.
@@ -15,7 +15,7 @@ So, if someone tries to access the /admin while logged out, they’ll be redirec
 Think about the basic example below, suppose that you defined one React route `/login`, and if user tries go to `/`, the page will be redirect to `/login`.
 
 ```js
-import {BrowserRouter, Route, Link, Switch, Redirect} from 'react-router-dom';
+import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
 
 /* Login component */
 const Login = props => {
@@ -32,7 +32,9 @@ const Login = props => {
 const Home = props => {
   console.log('location in Home');
   console.log(props.location);
-  return <Redirect to={{pathname: '/login', state: {from: props.location}}} />;
+  return (
+    <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+  );
 };
 
 /* App component */
@@ -69,7 +71,7 @@ const Admin = () => (
 /* Login component */
 const Login = props => {
   if (props.authenticated) {
-    return <Redirect to={{pathname: '/'}} />;
+    return <Redirect to={{ pathname: '/' }} />;
   } else {
     return (
       <div>
@@ -85,7 +87,7 @@ const Home = props => {
   if (props.authenticated) {
     return <Admin />;
   } else {
-    return <Redirect to={{pathname: '/login'}} />;
+    return <Redirect to={{ pathname: '/login' }} />;
   }
 };
 
@@ -93,10 +95,10 @@ const Home = props => {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {authenticated: false};
+    this.state = { authenticated: false };
   }
   loginHandler = () => {
-    this.setState({authenticated: true});
+    this.setState({ authenticated: true });
   };
   render() {
     return (
@@ -142,14 +144,14 @@ class App extends Component {
 Instead of using `<Redirect />` to protect routes, we can also use `history.push()`.
 
 ```js
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   BrowserRouter,
   Route,
   withRouter,
   Link,
   Switch,
-  Redirect,
+  Redirect
 } from 'react-router-dom';
 
 /* Admin component */
@@ -196,10 +198,10 @@ const WithRouterHome = withRouter(Home);
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {authenticated: false};
+    this.state = { authenticated: false };
   }
   loginHandler = () => {
-    this.setState({authenticated: true});
+    this.setState({ authenticated: true });
   };
   render() {
     return (
@@ -240,6 +242,93 @@ class App extends Component {
 }
 ```
 
-* Why we need a extra login function inside `<Login>`?
-* Why we need to use withRouter?
-* Why we did not use `<Route path="/" component={Home} />`?
+- Why we need a extra login function inside `<Login>`?
+- Why we need to use withRouter?
+- Why we did not use `<Route path="/" component={Home} />`?
+
+### Write custom route
+
+```js
+/* Private component */
+const Private = () => (
+  <div>
+    <h2>Private Page</h2>
+  </div>
+);
+/* Public component */
+const Public = () => (
+  <div>
+    <h2>Public Page</h2>
+  </div>
+);
+
+/* Login component */
+const Login = props => {
+  return (
+    <div>
+      <h2>Login Page</h2>
+      <button onClick={props.loginHandler}>Login</button>
+    </div>
+  );
+};
+
+// create a custom route to handle private page
+const PrivateRoute = ({ component: Component, authenticated, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      authenticated ? <Component {...props} /> : <Redirect to="/login" />
+    }
+  />
+);
+
+/* App component */
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { authenticated: false };
+  }
+  loginHandler = () => {
+    this.setState({ authenticated: true });
+  };
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Public</Link>
+              </li>
+              <li>
+                <Link to="/private">Private</Link>
+              </li>
+            </ul>
+          </nav>
+          <Switch>
+            <Route
+              exact={true}
+              path="/"
+              render={() => <Public authenticated={this.state.authenticated} />}
+            />
+            <PrivateRoute
+              path="/private"
+              authenticated={this.state.authenticated}
+              component={Private}
+            />
+            <Route
+              path="/login"
+              render={() => (
+                <Login
+                  authenticated={this.state.authenticated}
+                  loginHandler={this.loginHandler}
+                />
+              )}
+            />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+```
