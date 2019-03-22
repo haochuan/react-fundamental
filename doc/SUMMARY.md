@@ -77,6 +77,7 @@
 
   - [Webpack Basic](part13/webpack-basic.md)
   - [Webpack Loader](part13/webpack-loader.md)
+  - [ESLint](part13/webpack-eslint.md)
   - [Webpack HTML Plugin](part13/webpack-html-plugin.md)
   - [Webpack Dev Server](part13/webpack-devserver.md)
   - [CSS Loader](part13/css-loader.md)
