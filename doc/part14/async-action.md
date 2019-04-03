@@ -6,9 +6,9 @@ When you do an asynchronous HTTP request, there are two crucial moments in time:
 
 Usually, for any API request you'll want to dispatch at least three different kinds of actions:
 
-* An action informing the reducers that the request began.
-* An action informing the reducers that the request finished successfully.
-* An action informing the reducers that the request failed.
+- An action informing the reducers that the request began.
+- An action informing the reducers that the request finished successfully.
+- An action informing the reducers that the request failed.
 
 ```js
 { type: 'USER_FETCH_START' }
@@ -21,27 +21,27 @@ Let's go through an example of writing the actions and the reducer for getting H
 ##### Reducer
 
 ```js
-const initState = {isFetching: false, data: [], err: null};
+const initState = { isFetching: false, data: [], error: null };
 
 const reducer = (state = initState, action) => {
   switch (action.type) {
     case 'USER_FETCH_START':
       return {
         ...state,
-        isFetching: true,
+        isFetching: true
       };
     case 'USER_FETCH_FAIL':
       return {
         ...state,
         error: action.error,
-        isFetching: false,
+        isFetching: false
       };
     case 'USER_FETCH_SUCCESS':
       return {
         ...state,
         isFetching: false,
-        err: null,
-        data: action.data,
+        error: null,
+        data: action.data
       };
     default:
       return state;
@@ -56,19 +56,19 @@ export default reducer;
 ```js
 function requestStart() {
   return {
-    type: 'USER_FETCH_START',
+    type: 'USER_FETCH_START'
   };
 }
 function requestSuccess(response) {
   return {
     type: 'USER_FETCH_SUCCESS',
-    data: response.data,
+    data: response.data
   };
 }
 function requestFail(error) {
   return {
     type: 'USER_FETCH_FAIL',
-    error,
+    error
   };
 }
 function getData() {
@@ -90,10 +90,10 @@ The problem now is inside a action creator, there is no way we can have the acce
 
 ### [redux-thunk](https://github.com/gaearon/redux-thunk)
 
-* Redux middleware
-* Written by the creator of redux to help people to solve the issue we talked above
-* Allows you to write action creators that return a function instead of an action, which give you the access to `store.getState()` and `store.dispatch()` inside the function.
-* If you’re not sure whether you need it, you probably don’t.
+- Redux middleware
+- Written by the creator of redux to help people to solve the issue we talked above
+- Allows you to write action creators that return a function instead of an action, which give you the access to `store.getState()` and `store.dispatch()` inside the function.
+- If you’re not sure whether you need it, you probably don’t.
 
 Let's add this middleware to our application first:
 
@@ -109,31 +109,31 @@ Let's take a look at how we use the middleware:
 ```js
 function requestStart() {
   return {
-    type: 'USER_FETCH_START',
+    type: 'USER_FETCH_START'
   };
 }
 function requestSuccess(response) {
   return {
     type: 'USER_FETCH_SUCCESS',
-    data: response.data,
+    data: response.data
   };
 }
 function requestFail(error) {
   return {
     type: 'USER_FETCH_FAIL',
-    error,
+    error
   };
 }
 function getData() {
-  return (dispatch, store) => {
+  return (dispatch, getState) => {
     dispatch(requestStart());
     axios
       .get('/api/users')
       .then(response => {
         dispatch(requestSuccess(response));
       })
-      .catch(err => {
-        dispatch(requestFail(err));
+      .catch(error => {
+        dispatch(requestFail(error));
       });
   };
 }
@@ -158,7 +158,7 @@ If you feel the code is really hard to understand, think about it in the followi
 // regular action creator
 // which will return an object
 const regularAction = () => {
-  return {type: 'GET'};
+  return { type: 'GET' };
 };
 
 // dispatch action
@@ -174,7 +174,7 @@ store.dispatch(action);
 
 const thunkAction = () => {
   return (dispatch, getState) => {
-    dispatch({type: 'GET'});
+    dispatch({ type: 'GET' });
   };
 };
 
